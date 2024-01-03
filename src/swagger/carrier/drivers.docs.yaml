@@ -1,0 +1,341 @@
+paths:
+ /carrier/drivers:
+    get:  
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple drivers
+      description: Fetches a paginated list of drivers based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of drivers per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Successfully retrieved the accidents.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Driver'
+    post:
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Register a new driver
+      description: Validates the new driver's data, then adds it to the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverCreate'
+      responses:
+        201:
+          description: Driver is registered.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new driver.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/drivers/upload-excel/:
+    post:
+      summary: Create a new drivers from xls file
+      tags: [Drivers]
+      description: Use this endpoint to create a new drivers.
+      operationId: createDrivers
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        201:
+          description: Drivers created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Drivers created successfully"
+ /carrier/drivers/all:
+    get:
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Retrieve all drivers
+      description: Fetches a list of all drivers.
+      responses:
+        200:
+          description: Successfully retrieved the drivers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DriverBasic'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/drivers/{driver_id}:
+    get:
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Retrieve a single driver
+      description: Fetches a single driver by ID.
+      parameters:
+        - name: driver_id
+          in: path
+          description: ID of the driver to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Successfully retrieved the driver.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Update a driver's record
+      description: Updates details of a single driver by ID.
+      parameters:
+        - name: driver_id
+          in: path
+          description: ID of the driver to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverUpdate'
+      responses:
+        200:
+          description: Successfully updated the driver.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Driver'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Remove a driver's record
+      description: Deletes a single driver by ID.
+      parameters:
+        - name: driver_id
+          in: path
+          description: ID of the driver to remove.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully removed the driver.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/drivers/summary:
+    get:
+      summary: Get driver summaries
+      tags: [Drivers]
+      description: Retrieve summary details for drivers.
+      operationId: getDriverSummary
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Summary retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverSummary'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/drivers/{driver_id}/cdls:
+    post:
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Register a new driver's cdl
+      description: Validates the new cdl's data, then adds it to the database.
+      parameters:
+        - name: driver_id
+          in: path
+          description: ID of the driver to add.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverCdlCreate'
+      responses:
+        201:
+          description: DriverCdl is registered.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new driver's cdl.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/drivers/{driver_id}/cdls/{driver_cdl_id}:
+    put:
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Update a driver's cdl record
+      description: Updates details of a single cdl by ID.
+      parameters:
+        - name: driver_cdl_id
+          in: path
+          description: ID of the driver's cdl to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - name: driver_id
+          in: path
+          description: ID of the driver to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverCdlUpdate'
+      responses:
+        200:
+          description: Successfully updated the driver.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Driver with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [Drivers]
+      security:
+        - bearerAuth: []
+      summary: Remove a driver's cdl's record
+      description: Deletes a single driver by ID.
+      parameters:
+        - name: driver_cdl_id
+          in: path
+          description: ID of the driver's cdl to remove.
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - name: driver_id
+          in: path
+          description: ID of the driver to remove.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully removed the driver's cdl.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

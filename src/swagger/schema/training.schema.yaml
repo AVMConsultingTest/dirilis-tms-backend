@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: Converted from training.schema.yaml with typeconv
+  version: '1'
+  x-id: training.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/training.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    ITraining:
+      properties:
+        id:
+          title: ITraining.id
+          type: number
+        employee_type:
+          title: ITraining.employee_type
+        type:
+          title: ITraining.type
+        description:
+          title: ITraining.description
+          type: string
+        cadence:
+          title: ITraining.cadence
+        completion_date:
+          title: ITraining.completion_date
+        status:
+          title: ITraining.status
+        driver_id:
+          title: ITraining.driver_id
+          type: number
+      required:
+        - id
+        - employee_type
+        - type
+        - description
+        - cadence
+        - status
+        - driver_id
+      additionalProperties: false
+      title: ITraining
+      type: object
+    ITrainingCreate:
+      properties:
+        employee_type:
+          title: ITraining.employee_type
+        type:
+          title: ITraining.type
+        description:
+          title: ITraining.description
+          type: string
+        cadence:
+          title: ITraining.cadence
+        completion_date:
+          title: ITraining.completion_date
+        status:
+          title: ITraining.status
+        driver_id:
+          title: ITraining.driver_id
+          type: number
+      required:
+        - employee_type
+        - type
+        - description
+        - cadence
+        - status
+        - driver_id
+      additionalProperties: false
+      title: ITrainingCreate
+      type: object
+    ITrainingUpdate:
+      title: ITrainingUpdate

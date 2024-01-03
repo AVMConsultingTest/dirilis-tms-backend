@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  title: Converted from company.schema.yaml with typeconv
+  version: '1'
+  x-id: company.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/company.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    UserForOnboarding:
+      properties:
+        first_name:
+          title: UserForOnboarding.first_name
+          type: string
+        last_name:
+          title: UserForOnboarding.last_name
+          type: string
+        username:
+          title: UserForOnboarding.username
+          type: string
+        job_title:
+          title: UserForOnboarding.job_title
+          type: string
+      required:
+        - first_name
+        - last_name
+        - username
+      additionalProperties: false
+      title: UserForOnboarding
+      type: object
+    Company:
+      properties:
+        id:
+          title: Company.id
+          type: number
+        name:
+          title: Company.name
+          type: string
+        type:
+          $ref: '#/components/schemas/ECompanyType'
+          title: Company.type
+        email:
+          title: Company.email
+          type: string
+        phone_number:
+          title: Company.phone_number
+          type: string
+        address_line1:
+          title: Company.address_line1
+          type: string
+        address_line2:
+          title: Company.address_line2
+          type: string
+        state:
+          title: Company.state
+          type: string
+        city:
+          title: Company.city
+          type: string
+        zip_code:
+          title: Company.zip_code
+          type: string
+        country:
+          title: Company.country
+          type: string
+        account_number:
+          title: Company.account_number
+          type: string
+        routing_number:
+          title: Company.routing_number
+          type: string
+        ein_number:
+          title: Company.ein_number
+          type: string
+        mc_number:
+          title: Company.mc_number
+          type: string
+        dot_number:
+          title: Company.dot_number
+          type: string
+        factoring_company:
+          title: Company.factoring_company
+          type: string
+        factoring_account_number:
+          title: Company.factoring_account_number
+          type: string
+        factoring_username:
+          title: Company.factoring_username
+          type: string
+        factoring_password:
+          title: Company.factoring_password
+          type: string
+        logo:
+          title: Company.logo
+          type: string
+      required:
+        - id
+        - name
+        - type
+        - email
+      additionalProperties: false
+      title: Company
+      type: object
+    CompanyForOnboarding:
+      properties:
+        name:
+          title: Company.name
+          type: string
+        type:
+          $ref: '#/components/schemas/ECompanyType'
+          title: Company.type
+        email:
+          title: Company.email
+          type: string
+        phone_number:
+          title: Company.phone_number
+          type: string
+        address_line1:
+          title: Company.address_line1
+          type: string
+        address_line2:
+          title: Company.address_line2
+          type: string
+        state:
+          title: Company.state
+          type: string
+        city:
+          title: Company.city
+          type: string
+        zip_code:
+          title: Company.zip_code
+          type: string
+        country:
+          title: Company.country
+          type: string
+        account_number:
+          title: Company.account_number
+          type: string
+        routing_number:
+          title: Company.routing_number
+          type: string
+        mc_number:
+          title: Company.mc_number
+          type: string
+        dot_number:
+          title: Company.dot_number
+          type: string
+        factoring_company:
+          title: Company.factoring_company
+          type: string
+        factoring_account_number:
+          title: Company.factoring_account_number
+          type: string
+        factoring_username:
+          title: Company.factoring_username
+          type: string
+        factoring_password:
+          title: Company.factoring_password
+          type: string
+        logo:
+          title: Company.logo
+          type: string
+      required:
+        - name
+        - type
+        - email
+      additionalProperties: false
+      title: CompanyForOnboarding
+      type: object
+    Onboarding:
+      properties:
+        user:
+          $ref: '#/components/schemas/UserForOnboarding'
+          title: Onboarding.user
+        company:
+          $ref: '#/components/schemas/CompanyForOnboarding'
+          title: Onboarding.company
+      required:
+        - user
+        - company
+      additionalProperties: false
+      title: Onboarding
+      type: object
+    ECompanyType:
+      enum:
+        - broker
+        - carrier
+      title: ECompanyType
+      type: string

@@ -1,0 +1,102 @@
+paths:
+  /auth/login:
+    post:
+      summary: Authenticate a user
+      description: Log in a user by validating their email and password, then return access and refresh tokens.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  description: The user's email address.
+                  example: carrier@gmail.com
+                password:
+                  type: string
+                  description: The user's password.
+                  example: hellocarrier
+      responses:
+        200:
+          description: Successfully authenticated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: The JWT access token for the user.
+                  role:
+                    type: string
+                    description: The role of the authenticated user.
+                  company_id:
+                    type: number
+                    description: The ID of the company associated with the user.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /auth/change-password:
+    post:
+      summary: Change user's password
+      description: Validates the user by their email and old password, then updates the password and generates new access and refresh tokens.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+                - new_password
+              properties:
+                email:
+                  type: string
+                  description: The user's email address.
+                  example: user@example.com
+                password:
+                  type: string
+                  description: The user's current password.
+                  example: oldpassword123
+                new_password:
+                  type: string
+                  description: The new password the user wants to set.
+                  example: newpassword123
+      responses:
+        200:
+          description: Successfully changed the password.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: The new JWT access token for the user.
+                  role:
+                    type: string
+                    description: The role of the user.
+                  company_id:
+                    type: number
+                    description: The ID of the company associated with the user.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - bearerAuth: []

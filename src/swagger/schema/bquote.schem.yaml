@@ -1,0 +1,148 @@
+openapi: 3.0.0
+info:
+  title: Converted from bquote.schem.yaml with typeconv
+  version: '1'
+  x-id: bquote.schem.yaml
+  x-comment: >-
+    Generated from src/interfaces/bquote.schem.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    BQuote:
+      properties:
+        id:
+          title: BQuote.id
+          type: number
+        name:
+          title: BQuote.name
+          type: string
+        origin:
+          title: BQuote.origin
+          type: string
+        destination:
+          title: BQuote.destination
+          type: string
+        pickup_time:
+          title: BQuote.pickup_time
+        delivery_time:
+          title: BQuote.delivery_time
+        cargo_type:
+          title: BQuote.cargo_type
+          type: string
+        cargo_weight:
+          title: BQuote.cargo_weight
+          type: string
+        equipment_type:
+          title: BQuote.equipment_type
+          type: string
+        quote:
+          title: BQuote.quote
+          type: string
+        customer_phone_number:
+          title: BQuote.customer_phone_number
+          type: string
+        status:
+          title: BQuote.status
+          type: string
+      required:
+        - id
+        - name
+        - origin
+        - destination
+        - pickup_time
+        - delivery_time
+        - cargo_type
+        - cargo_weight
+        - equipment_type
+        - quote
+        - customer_phone_number
+        - status
+      additionalProperties: false
+      title: BQuote
+      type: object
+    BQuoteCreate:
+      properties:
+        name:
+          title: BQuote.name
+          type: string
+        origin:
+          title: BQuote.origin
+          type: string
+        destination:
+          title: BQuote.destination
+          type: string
+        pickup_time:
+          title: BQuote.pickup_time
+        delivery_time:
+          title: BQuote.delivery_time
+        cargo_type:
+          title: BQuote.cargo_type
+          type: string
+        cargo_weight:
+          title: BQuote.cargo_weight
+          type: string
+        equipment_type:
+          title: BQuote.equipment_type
+          type: string
+        quote:
+          title: BQuote.quote
+          type: string
+        customer_phone_number:
+          title: BQuote.customer_phone_number
+          type: string
+        status:
+          title: BQuote.status
+          type: string
+      required:
+        - name
+        - origin
+        - destination
+        - pickup_time
+        - delivery_time
+        - cargo_type
+        - cargo_weight
+        - equipment_type
+        - quote
+        - customer_phone_number
+        - status
+      additionalProperties: false
+      title: BQuoteCreate
+      type: object
+    BQuoteUpdate:
+      properties:
+        name:
+          title: BQuote.name
+          type: string
+        origin:
+          title: BQuote.origin
+          type: string
+        destination:
+          title: BQuote.destination
+          type: string
+        pickup_time:
+          title: BQuote.pickup_time
+        delivery_time:
+          title: BQuote.delivery_time
+        cargo_type:
+          title: BQuote.cargo_type
+          type: string
+        cargo_weight:
+          title: BQuote.cargo_weight
+          type: string
+        equipment_type:
+          title: BQuote.equipment_type
+          type: string
+        quote:
+          title: BQuote.quote
+          type: string
+        customer_phone_number:
+          title: BQuote.customer_phone_number
+          type: string
+        status:
+          title: BQuote.status
+          type: string
+      additionalProperties: false
+      title: BQuoteUpdate
+      type: object

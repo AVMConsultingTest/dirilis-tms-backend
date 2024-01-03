@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Converted from trailer.schema.yaml with typeconv
+  version: '1'
+  x-id: trailer.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/trailer.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    ITrailer:
+      properties:
+        unit_number:
+          title: ITrailer.unit_number
+          type: string
+        status:
+          $ref: '#/components/schemas/ETrailerStatus'
+          title: ITrailer.status
+        brand:
+          title: ITrailer.brand
+          type: string
+        model:
+          title: ITrailer.model
+          type: string
+        color:
+          title: ITrailer.color
+          type: string
+        year:
+          title: ITrailer.year
+          type: string
+        plate:
+          title: ITrailer.plate
+          type: string
+        ownership_type:
+          title: ITrailer.ownership_type
+          type: string
+        owner_driver_id:
+          title: ITrailer.owner_driver_id
+          type: number
+        length:
+          title: ITrailer.length
+          type: string
+        width:
+          title: ITrailer.width
+          type: string
+        height:
+          title: ITrailer.height
+          type: string
+        capacity:
+          title: ITrailer.capacity
+          type: string
+        vin_number:
+          title: ITrailer.vin_number
+          type: string
+        notes:
+          title: ITrailer.notes
+          type: string
+      required:
+        - unit_number
+        - status
+        - brand
+        - model
+        - color
+        - year
+        - plate
+        - ownership_type
+        - length
+        - width
+        - height
+        - capacity
+        - vin_number
+        - notes
+      additionalProperties: false
+      title: ITrailer
+      type: object
+    ITrailerCreate:
+      properties:
+        unit_number:
+          title: ITrailer.unit_number
+          type: string
+        status:
+          $ref: '#/components/schemas/ETrailerStatus'
+          title: ITrailer.status
+        brand:
+          title: ITrailer.brand
+          type: string
+        model:
+          title: ITrailer.model
+          type: string
+        color:
+          title: ITrailer.color
+          type: string
+        year:
+          title: ITrailer.year
+          type: string
+        plate:
+          title: ITrailer.plate
+          type: string
+        ownership_type:
+          title: ITrailer.ownership_type
+          type: string
+        owner_driver_id:
+          title: ITrailer.owner_driver_id
+          type: number
+        length:
+          title: ITrailer.length
+          type: string
+        width:
+          title: ITrailer.width
+          type: string
+        height:
+          title: ITrailer.height
+          type: string
+        capacity:
+          title: ITrailer.capacity
+          type: string
+        vin_number:
+          title: ITrailer.vin_number
+          type: string
+        notes:
+          title: ITrailer.notes
+          type: string
+      required:
+        - unit_number
+        - status
+        - brand
+        - model
+        - color
+        - year
+        - plate
+        - ownership_type
+        - length
+        - width
+        - height
+        - capacity
+        - vin_number
+        - notes
+      additionalProperties: false
+      title: ITrailerCreate
+      type: object
+    ITrailerUpdate:
+      title: ITrailerUpdate
+    ETrailerStatus:
+      enum:
+        - Enroute
+        - Ready
+        - InShop
+        - InTerminal
+      title: ETrailerStatus
+      type: string

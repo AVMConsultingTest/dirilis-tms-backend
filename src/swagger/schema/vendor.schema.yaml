@@ -1,0 +1,74 @@
+components:
+  schemas:
+    Vendor:
+      type: object
+      required:
+        - name
+        - contact_name
+        - email
+        - phone_number
+        - address_line1
+        - state
+        - city
+        - zip_code
+        - country
+        - line_of_business
+      properties:
+        name:
+          type: string
+          example: "ABC Supplies"
+        contact_name:
+          type: string
+          example: "John Doe"
+        email:
+          type: string
+          format: email
+          example: "john.doe@example.com"
+        phone_number:
+          type: string
+          example: "+1234567890"
+        address_line1:
+          type: string
+          example: "123 Main St."
+        address_line2:
+          type: string
+          example: "Suite 456"
+        state:
+          type: string
+          example: "CA"
+        city:
+          type: string
+          example: "Los Angeles"
+        zip_code:
+          type: string
+          example: "90001"
+        country:
+          type: string
+          example: "USA"
+        business_hours:
+          type: string
+          example: "9:00 AM - 5:00 PM"
+        line_of_business:
+          type: string
+          example: "Supplier"
+        status:
+          type: string
+          enum:
+            - "Active"
+            - "Inactive"
+          example: "Active"
+        account_number:
+          type: string
+          example: "1234567890"
+        bank_name:
+          type: string
+          example: "ABC Bank"
+        routing_number:
+          type: string
+          example: "987654321"
+    VendorCreate:
+      $ref: '#/components/schemas/Vendor'
+      
+    VendorUpdate:
+      allOf:
+        - $ref: '#/components/schemas/Vendor'

@@ -1,0 +1,78 @@
+components:
+  schemas:
+    Inspection:
+      type: object
+      required:
+        - category
+        - date
+        - state
+        - report_number
+        - inspection_level
+        - violation_group
+        - description
+        - violations_count
+        - sequence
+        - out_of_service
+        - violation_severity
+        - oos_violation_severity
+        - total_violation_severity
+        - time_weight
+        - total_points
+        - driver_id
+      properties:
+        category:
+          type: string
+          example: "Roadside Inspection"
+        date:
+          type: string
+          format: date-time
+          example: "2023-08-18T12:00:00Z"
+        state:
+          type: string
+          example: "CA"
+        report_number:
+          type: string
+          example: "INS12345"
+        inspection_level:
+          type: number
+          example: 1
+        violation_group:
+          type: string
+          example: "Brakes"
+        description:
+          type: string
+          example: "Defective brakes"
+        violations_count:
+          type: number
+          example: 3
+        sequence:
+          type: number
+          example: 1
+        out_of_service:
+          type: string
+          example: "No"
+        violation_severity:
+          type: number
+          example: 2
+        oos_violation_severity:
+          type: number
+          example: 1
+        total_violation_severity:
+          type: number
+          example: 3
+        time_weight:
+          type: number
+          example: 1
+        total_points:
+          type: number
+          example: 6
+        driver_id:
+          type: integer
+          example: 2
+
+    InspectionCreate:
+      $ref: '#/components/schemas/Inspection'
+      
+    InspectionUpdate:
+      allOf:
+        - $ref: '#/components/schemas/Inspection'

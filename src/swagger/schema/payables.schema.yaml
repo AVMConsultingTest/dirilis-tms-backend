@@ -1,0 +1,45 @@
+components:
+  schemas:
+    PayablesSummary:
+      type: object
+      properties:
+        active_trucks:
+          type: number
+          example: 1
+        active_trailers:
+          type: number
+          example: 1
+        trucks_in_shop:
+          type: number
+          example: 1
+        trailers_in_shop:
+          type: number
+          example: 1
+        parking_lot:
+          type: number
+          example: 1
+        office_building:
+          type: number
+          example: 1
+
+    PayablesPaymentsSummary:
+      type: object
+      properties:
+        fleet_payment:
+          type: number
+          example: 1
+        real_estate_payment:
+          type: number
+          example: 1
+        operational_payment:
+          type: number
+          example: 1
+        upcoming_fleet_payment:
+          type: number
+          example: 1
+        upcoming_real_estate_payment:
+          type: number
+          example: 1
+        upcoming_operational_payment:
+          type: number
+          example: 1

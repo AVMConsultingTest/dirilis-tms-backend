@@ -1,0 +1,53 @@
+components:
+  schemas:
+    Device:
+      type: object
+      required:
+        - truck_id
+        - type
+        - vendor
+        - service_start_date
+        - service_end_date
+        - returned_date
+      properties:
+        truck_id:
+          type: integer
+          example: 2
+        type:
+          type: string
+          example: "GPS Tracker"
+        vendor:
+          type: string
+          example: "DeviceCorp"
+        service_start_date:
+          type: string
+          format: date
+          example: "2023-08-18"
+        service_end_date:
+          type: string
+          format: date
+          example: "2023-12-31"
+        returned_date:
+          type: string
+          format: date
+          example: "2023-08-25"
+        notes:
+          type: string
+          example: "Device service notes"
+
+    DeviceCreate:
+      $ref: '#/components/schemas/Device'
+      
+    DeviceUpdate:
+      allOf:
+        - $ref: '#/components/schemas/Device'
+    
+    DeviceCount:
+      type: object
+      properties:
+        device_type:
+          type: string
+          description: Type of the device
+        device_count:
+          type: integer
+          description: Count of devices

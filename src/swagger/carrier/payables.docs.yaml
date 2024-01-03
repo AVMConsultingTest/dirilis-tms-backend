@@ -1,0 +1,42 @@
+paths:
+ /carrier/payables/summary:
+    get:
+      tags: [Payables]
+      security:
+        - bearerAuth: []
+      summary: Get payables summary
+      description: Retrieves a summary of payables information.
+      responses:
+        200:
+          description: Successfully retrieved payables summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayablesSummary'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+
+ /carrier/payables/payments-summary:
+    get:
+      tags: [Payables]
+      security:
+        - bearerAuth: []
+      summary: Get payables payments summary
+      description: Retrieves a summary of payables payments information.
+      responses:
+        200:
+          description: Successfully retrieved payables payments summary.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayablesPaymentsSummary'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

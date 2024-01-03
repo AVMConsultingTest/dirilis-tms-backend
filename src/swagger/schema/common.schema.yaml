@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  title: Converted from common.schema.yaml with typeconv
+  version: '1'
+  x-id: common.schema.yaml
+  x-comment: >-
+    Generated from src\interfaces\common.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    EBool:
+      enum:
+        - 'Yes'
+        - 'No'
+      title: EBool
+      type: string
+    Date:
+      title: Date
+      enum:
+        - '2023-08-18'
+      type: string

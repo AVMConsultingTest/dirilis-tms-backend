@@ -1,0 +1,190 @@
+openapi: 3.0.0
+info:
+  title: Converted from permit.schema.yaml with typeconv
+  version: '1'
+  x-id: permit.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/permit.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Permit:
+      properties:
+        id:
+          title: Permit.id
+          type: number
+        type:
+          title: Permit.type
+          type: string
+        number:
+          title: Permit.number
+          type: string
+        duration:
+          title: Permit.duration
+          type: string
+        start_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.start_date
+        end_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.end_date
+        purchased_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.purchased_date
+        cost:
+          title: Permit.cost
+          type: number
+        delivery_status:
+          title: Permit.delivery_status
+          type: string
+        vendor_url:
+          title: Permit.vendor_url
+          type: string
+        installed:
+          $ref: '#/components/schemas/EBool'
+          title: Permit.installed
+        notes:
+          title: Permit.notes
+          type: string
+        truck_id:
+          title: Permit.truck_id
+          type: number
+      required:
+        - id
+        - type
+        - number
+        - duration
+        - start_date
+        - end_date
+        - purchased_date
+        - cost
+        - delivery_status
+        - vendor_url
+        - installed
+        - notes
+        - truck_id
+      additionalProperties: false
+      title: Permit
+      type: object
+    PermitCreate:
+      properties:
+        type:
+          title: Permit.type
+          type: string
+        number:
+          title: Permit.number
+          type: string
+        duration:
+          title: Permit.duration
+          type: string
+        start_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.start_date
+        end_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.end_date
+        purchased_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.purchased_date
+        cost:
+          title: Permit.cost
+          type: number
+        delivery_status:
+          title: Permit.delivery_status
+          type: string
+        vendor_url:
+          title: Permit.vendor_url
+          type: string
+        installed:
+          $ref: '#/components/schemas/EBool'
+          title: Permit.installed
+        notes:
+          title: Permit.notes
+          type: string
+        truck_id:
+          title: Permit.truck_id
+          type: number
+      required:
+        - type
+        - number
+        - duration
+        - start_date
+        - end_date
+        - purchased_date
+        - cost
+        - delivery_status
+        - vendor_url
+        - installed
+        - notes
+        - truck_id
+      additionalProperties: false
+      title: PermitCreate
+      type: object
+    PermitUpdate:
+      properties:
+        type:
+          title: Permit.type
+          type: string
+        number:
+          title: Permit.number
+          type: string
+        duration:
+          title: Permit.duration
+          type: string
+        start_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.start_date
+        end_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.end_date
+        purchased_date:
+          $ref: '#/components/schemas/Date'
+          title: Permit.purchased_date
+        cost:
+          title: Permit.cost
+          type: number
+        delivery_status:
+          title: Permit.delivery_status
+          type: string
+        vendor_url:
+          title: Permit.vendor_url
+          type: string
+        installed:
+          $ref: '#/components/schemas/EBool'
+          title: Permit.installed
+        notes:
+          title: Permit.notes
+          type: string
+        truck_id:
+          title: Permit.truck_id
+          type: number
+      additionalProperties: false
+      title: PermitUpdate
+      type: object
+    PermitSummary:
+      properties:
+        type1:
+          title: PermitSummary.type1
+          type: number
+        type2:
+          title: PermitSummary.type2
+          type: number
+      required:
+        - type1
+        - type2
+      additionalProperties: false
+      title: PermitSummary
+      type: object
+    Date:
+      title: Date
+      enum:
+        - '2023-08-18'
+      type: string
+    EBool:
+      enum:
+        - 'Yes'
+        - 'No'
+      title: EBool
+      type: string

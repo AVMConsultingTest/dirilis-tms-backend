@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Converted from location.yaml with typeconv
+  version: '1'
+  x-id: location.yaml
+  x-comment: >-
+    Generated from src/interfaces/location.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    ILocationSwagger:
+      properties:
+        id:
+          title: ILocationSwagger.id
+          type: number
+        name:
+          title: ILocationSwagger.name
+          type: string
+        address_line1:
+          title: ILocationSwagger.address_line1
+          type: string
+        address_line2:
+          title: ILocationSwagger.address_line2
+          type: string
+        city:
+          title: ILocationSwagger.city
+          type: string
+        state:
+          title: ILocationSwagger.state
+          type: string
+        zip_code:
+          title: ILocationSwagger.zip_code
+          type: string
+        status:
+          title: ILocationSwagger.status
+      required:
+        - id
+        - name
+        - address_line1
+        - city
+        - state
+        - zip_code
+        - status
+      additionalProperties: false
+      title: ILocationSwagger
+      type: object
+    ILocationCreateSwagger:
+      properties:
+        name:
+          title: ILocationSwagger.name
+          type: string
+        address_line1:
+          title: ILocationSwagger.address_line1
+          type: string
+        address_line2:
+          title: ILocationSwagger.address_line2
+          type: string
+        city:
+          title: ILocationSwagger.city
+          type: string
+        state:
+          title: ILocationSwagger.state
+          type: string
+        zip_code:
+          title: ILocationSwagger.zip_code
+          type: string
+        status:
+          title: ILocationSwagger.status
+      required:
+        - name
+        - address_line1
+        - city
+        - state
+        - zip_code
+        - status
+      additionalProperties: false
+      title: ILocationCreateSwagger
+      type: object
+    ILocationUpdateSwagger:
+      title: ILocationUpdateSwagger

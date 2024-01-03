@@ -1,0 +1,168 @@
+paths:
+ /carrier/incidents:
+    post:
+      summary: Create a new incident
+      tags: [Incidents]
+      description: This endpoint creates a new incident.
+      operationId: createIncident
+      requestBody:
+        description: The incident's information
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentCreate'
+      responses:
+        201:
+          description: Incident created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      summary: Retrieve incidents
+      tags: [Incidents]
+      description: This endpoint retrieves all incidents.
+      operationId: getIncidents
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of alerts per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Incident'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/incidents/{incidentId}:
+    get:
+      summary: Get an incident by ID
+      tags: [Incidents]
+      description: Use this endpoint to get details about a specific incident by its ID.
+      operationId: getIncidentById
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: incidentId
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Incident'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      summary: update an incident by ID
+      tags: [Incidents]
+      description: This endpoint update a incident details. incident id must be required.
+      operationId: updateIncident
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: incidentId
+          schema:
+            type: string
+          required: true
+          description: The ID of the incident
+      requestBody:
+        description: The incident's information
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentUpdate'
+      responses:
+        200:
+          description: Incident with ID updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Incident with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete incident by incident id
+      tags: [Incidents]
+      description: This endpoint delete incident. The user making the request must need to pass incident id.
+      operationId: deleteIncident
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: incidentId
+          schema:
+            type: string
+          required: true
+          description: The ID of the incident
+      responses:
+        204:
+          description: Incident with ID removed successfull
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

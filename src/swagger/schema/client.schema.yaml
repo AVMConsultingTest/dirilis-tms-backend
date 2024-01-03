@@ -1,0 +1,46 @@
+components:
+  schemas:
+    Client:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - email
+        - phone_number
+        - company_name
+        - company_type
+      properties:
+        first_name:
+          type: string
+          example: "Alice"
+        last_name:
+          type: string
+          example: "Johnson"
+        email:
+          type: string
+          format: email
+          example: "alice.johnson@example.com"
+        phone_number:
+          type: string
+          example: "+12025551234"
+        company_name:
+          type: string
+          example: "Example Corp"
+        company_type:
+          type: string
+          enum:
+            - "Logistics"
+            - "Manufacturing"
+            - "Retail"
+            - "Finance"
+          example: "Logistics"
+        source:
+          type: string
+          example: "Referral"
+
+    ClientCreate:
+      $ref: '#/components/schemas/Client'
+      
+    ClientUpdate:
+      allOf:
+        - $ref: '#/components/schemas/Client'

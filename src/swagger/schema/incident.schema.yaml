@@ -1,0 +1,49 @@
+components:
+  schemas:
+    Incident:
+      type: object
+      required:
+        - driver_id
+        - truck_id
+        - unit_number
+        - event_type
+      properties:
+        id:
+          type: integer
+          example: 1
+        driver_id:
+          type: integer
+          example: 2
+        truck_id:
+          type: integer
+          example: 3
+        unit_number:
+          type: string
+          example: "TRK123"
+        event_type:
+          type: string
+          example: "Collision"
+        date:
+          type: string
+          format: date-time
+          example: "2023-08-18T12:00:00Z"
+        training_required:
+          type: string
+          example: "Yes"
+        training_completed:
+          type: string
+          example: "Yes"
+    IncidentCreate:
+      allOf:
+        - $ref: '#/components/schemas/Incident'
+        - type: object
+          properties: 
+            id: 
+              readOnly: true
+    IncidentUpdate:
+      allOf:
+        - $ref: '#/components/schemas/Incident'
+        - type: object
+          properties: 
+            id: 
+              readOnly: true

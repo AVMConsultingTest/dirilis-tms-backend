@@ -1,0 +1,494 @@
+paths:
+ /carrier/eld/entities/drivers:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple driver entities
+      description: Fetches a paginated list of driver entities based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of driver entities per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Successfully retrieved the driver entities.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldDriverEntity'
+ /carrier/eld/entities/trucks:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple truck  entities
+      description: Fetches a paginated list of truck  entities based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of truck entities per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Successfully retrieved the truck entities.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldTruckEntity'
+ /carrier/eld/entities/trailers:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple trailer entities
+      description: Fetches a paginated list of trailer entities based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of trailer entities per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Successfully retrieved the trailer entities.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldTrailerEntity'
+ /carrier/eld/alerts:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple alerts
+      description: Fetches a paginated list of alerts based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of alerts per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - in: query
+          name: status
+          schema:
+            $ref: "#/components/schemas/EEldAlertStatus"
+        - in: query
+          name: event_type
+          schema:
+            $ref: "#/components/schemas/EEldAlertEventType"
+        - in: query
+          name: driver_id
+          schema:
+            type: integer
+            default: 1
+      responses:
+        200:
+          description: Successfully retrieved the alerts.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldAlert'
+ /carrier/eld/ifta/drivers:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple driver ifta
+      description: Fetches a paginated list of driver ifta based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of driver ifta per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - in: query
+          name: driver_id
+          schema:
+            type: integer
+            default: 1
+      responses:
+        200:
+          description: Successfully retrieved the driver ifta.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldIftaDriver'
+ /carrier/eld/ifta/vehicles:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple vehicle ifta
+      description: Fetches a paginated list of vehicle ifta based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of vehicle ifta per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - in: query
+          name: vehicle_id
+          schema:
+            type: integer
+            default: 1
+      responses:
+        200:
+          description: Successfully retrieved the vehicle ifta.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldIftaVehicle'
+ /carrier/eld/ifta/trip-reports:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple trip-report ifta
+      description: Fetches a paginated list of trip-report ifta based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of trip-report ifta per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - in: query
+          name: vehicle_id
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: jurisdiction
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successfully retrieved the trip-report ifta.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldIftaTripReport'
+ /carrier/eld/ifta/summary:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple summary ifta
+      description: Fetches a paginated list of summary ifta based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of summary ifta per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - in: query
+          name: jurisdiction
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successfully retrieved the summary ifta.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldIftaSummary'
+ /carrier/eld/ifta/fuel-purchases:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple fuel-purchase ifta
+      description: Fetches a paginated list of fuel-purchase ifta based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of fuel-purchase ifta per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - in: query
+          name: jurisdiction
+          schema:
+            type: string
+        - in: query
+          name: vehicle_id
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: fuel_type
+          schema:
+            $ref: "#/components/schemas/EFuelType"
+        - in: query
+          name: source
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successfully retrieved the fuel-purchase ifta.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldIftaFuelPurchase'
+ /carrier/eld/ifta/idling-events:
+    get:  
+      tags: [Elds]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple idling-event ifta
+      description: Fetches a paginated list of idling-event ifta based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of idling-event ifta per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - in: query
+          name: vehicle_id
+          schema:
+            type: integer
+            default: 1
+        - in: query
+          name: driver_id
+          schema:
+            type: integer
+            default: 1
+      responses:
+        200:
+          description: Successfully retrieved the idling-event ifta.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EldIftaIdlingEvent'

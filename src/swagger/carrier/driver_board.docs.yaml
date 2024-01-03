@@ -1,0 +1,134 @@
+paths:
+ /carrier/driver-boards:
+    get:  
+      tags: [Driver Boards]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple driver boards
+      description: Fetches a paginated list of driver boards based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of driver boards per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Successfully retrieved the driver boards.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DriverBoardDetails'
+    post:
+      tags: [Driver Boards]
+      security:
+        - bearerAuth: []
+      summary: Create a new driver board
+      description: Validates the new driver board's data, then creates an entry in the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverBoardCreate'
+      responses:
+        201:
+          description: Driver board is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of new driver board.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/driver-boards/{driver_board_id}:
+    put:
+      tags: [Driver Boards]
+      security:
+        - bearerAuth: []
+      summary: Update a single driver board
+      description: Updates a single driver board by ID.
+      parameters:
+        - name: driver_board_id
+          in: path
+          description: ID of the driver board to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverBoardUpdate'
+      responses:
+        200:
+          description: Successfully updated the driver board.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Driver board with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [Driver Boards]
+      security:
+        - bearerAuth: []
+      summary: Delete a single driver board
+      description: Deletes a single driver board by ID.
+      parameters:
+        - name: driver_board_id
+          in: path
+          description: ID of the driver board to delete.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully deleted the driver board.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

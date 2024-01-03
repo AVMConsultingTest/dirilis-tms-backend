@@ -1,0 +1,191 @@
+paths:
+ /carrier/applicants:
+    get:  
+      tags: [Applicants]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple applicants
+      description: Fetches a paginated list of applicants based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of applicants per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - name: status
+          in: query
+          description: Filter by applicant status.
+          required: false
+          schema:
+            type: string
+            enum: [Completed, Not Completed, New Applicant, Declined, Disqualified, Training, Approved]
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Applicant'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      tags: [Applicants]
+      security:
+        - bearerAuth: []
+      summary: Create a new applicant
+      description: Validates the new applicant's data, then creates an entry in the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicantCreate'
+      responses:
+        201:
+          description: Applicant is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new applicant.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/applicants/{applicant_id}:
+    get:
+      tags: [Applicants]
+      security:
+        - bearerAuth: []
+      summary: Retrieve a single applicant
+      description: Fetches a single applicant by ID.
+      parameters:
+        - name: applicant_id
+          in: path
+          description: ID of the applicant to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Successfully retrieved the applicant.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicant'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags: [Applicants]
+      security:
+        - bearerAuth: []
+      summary: Update a single applicant
+      description: Updates a single applicant by ID.
+      parameters:
+        - name: applicant_id
+          in: path
+          description: ID of the applicant to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicantUpdate'
+      responses:
+        200:
+          description: Successfully updated the applicant.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Applicant'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [Applicants]
+      security:
+        - bearerAuth: []
+      summary: Delete a single applicant
+      description: Deletes a single applicant by ID.
+      parameters:
+        - name: applicant_id
+          in: path
+          description: ID of the applicant to delete.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully deleted the applicant.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/applicants/summary:
+    get:
+      summary: Get applicant summary
+      tags: [Applicants]
+      description: Retrieve summary details for applicants.
+      operationId: getApplicantSummary
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Summary retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicantSummary'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

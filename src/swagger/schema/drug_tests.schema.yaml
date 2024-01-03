@@ -1,0 +1,45 @@
+components:
+  schemas:
+    DrugTest:
+      type: object
+      required:
+        - type
+        - status
+        - date
+      properties:
+        type:
+          type: string
+          enum:
+            - "Pre-Employment"
+            - "Random"
+            - "Post-Accident"
+            - "Reasonable Suspicion"
+            - "Return-to-Duty"
+            - "Follow-Up"
+          example: "Random"
+        status:
+          type: string
+          enum:
+            - "Pending"
+            - "Scheduled"
+            - "Completed"
+            - "Failed"
+            - "Passed"
+          example: "Pending"
+        date:
+          type: string
+          format: date-time
+          example: "2023-08-18T12:00:00Z"
+        result:
+          type: string
+          example: "Positive"
+        driver_id:
+          type: integer
+          example: 2
+
+    DrugTestCreate:
+      $ref: '#/components/schemas/DrugTest'
+      
+    DrugTestUpdate:
+      allOf:
+        - $ref: '#/components/schemas/DrugTest'

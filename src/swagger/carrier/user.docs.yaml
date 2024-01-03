@@ -1,0 +1,182 @@
+paths:
+ /carrier/users:
+    get:  
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple users
+      description: Fetches a paginated list of users based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of users per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+    post:
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      summary: Create a new user
+      description: Validates the new user's data, then registers them in the system.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        201:
+          description: User successfully created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new user.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/users/{id}:
+    get:
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      summary: Retrieve a single user
+      description: Fetches a user's details by their ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Successfully retrieved the user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/users/me:
+    get:
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      summary: Retrieve a authenticated user
+      description: Fetches a user's details by their token.
+      responses:
+        200:
+          description: Successfully retrieved the user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/users/{user_id}/:
+    put:
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      summary: Update user details
+      description: Modifies the details of an existing user.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        200:
+          description: Successfully updated the user.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: object
+                    example: User with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      summary: Delete a user
+      description: Removes a user from the system based on their ID.
+      parameters:
+        - name: id
+          in: path
+          description: ID of the user to delete.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully deleted the user.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

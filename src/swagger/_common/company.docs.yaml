@@ -1,0 +1,32 @@
+paths:
+ /companies/onboarding:
+    post:
+      summary: Onboard a user's company
+      description: This endpoint validates the user and their company data, checks if the user or company already exists, then creates a new company entry and updates the user's data with the company details.
+      tags:
+        - Onboarding
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Onboarding'
+      responses:
+        201:
+          description: Successfully onboarded the company.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Company is onboarded successfully"
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+      security:
+        - bearerAuth: []

@@ -1,0 +1,195 @@
+paths:
+ /carrier/devices:
+    get:  
+      tags: [Devices]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple devices
+      description: Fetches a paginated list of devices based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of devices per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Device'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      tags: [Devices]
+      security:
+        - bearerAuth: []
+      summary: Register a new device
+      description: Validates the new device's data, then registers it in the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceCreate'
+      responses:
+        201:
+          description: Device is registered.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new device.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/devices/{device_id}:
+    get:
+      tags: [Devices]
+      security:
+        - bearerAuth: []
+      summary: Retrieve a single device
+      description: Fetches a single device by ID.
+      parameters:
+        - name: device_id
+          in: path
+          description: ID of the device to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Successfully retrieved the device.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags: [Devices]
+      security:
+        - bearerAuth: []
+      summary: Update a single device
+      description: Updates details of a single device by ID.
+      parameters:
+        - name: device_id
+          in: path
+          description: ID of the device to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceUpdate'
+      responses:
+        200:
+          description: Successfully updated the device.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Device with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [Devices]
+      security:
+        - bearerAuth: []
+      summary: Delete a single device
+      description: Deletes a single device by ID.
+      parameters:
+        - name: device_id
+          in: path
+          description: ID of the device to delete.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully deleted the device.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/devices/count:
+    get:
+      tags:
+        - "Devices"
+      summary: "Get devices count based on time range"
+      operationId: "getDevicesCount"
+      # parameters:
+      #   - name: "timeRange"
+      #     in: "query"
+      #     description: "Time range for counting devices"
+      #     required: false
+      #     type: "string"
+      #     enum: ["month", "year"]
+      responses:
+        200:
+          description: Devices counts.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DeviceCount'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

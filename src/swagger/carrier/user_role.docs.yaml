@@ -1,0 +1,55 @@
+paths:
+ /carrier/user-roles/:
+    post:
+      tags: [UserRoles]
+      security:
+        - bearerAuth: []
+      summary: Register a new user_role
+      description: Validates the new user_role's data, then adds it to the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRoleCreate'
+      responses:
+        201:
+          description: UserRole is registered.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new user_role.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/user-roles/{user_role_id}:
+    delete:
+      tags: [UserRoles]
+      security:
+        - bearerAuth: []
+      summary: Remove a user_role's record
+      description: Deletes a single user_role by ID.
+      parameters:
+        - name: user_role_id
+          in: path
+          description: ID of the user_role to remove.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully removed the user_role.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

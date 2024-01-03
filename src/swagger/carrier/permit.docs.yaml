@@ -1,0 +1,184 @@
+paths:
+ /carrier/permits:
+    post:
+      summary: Create a new permit
+      tags: [Permits]
+      description: This endpoint creates a new permit.
+      operationId: createPermit
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: The permit's information
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermitCreate'
+      responses:
+        201:
+          description: Permit created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      summary: Retrieve permits
+      tags: [Permits]
+      description: This endpoint retrieves all permits.
+      operationId: getPermits
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of inspections per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Permit'
+ /carrier/permits/expiring-summary:
+    get:
+      summary: Get a permits Summary
+      tags: [Permits]
+      description: Use this endpoint to get details about a specific permit by its ID.
+      operationId: getPermitsSummary
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermitSummary'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/permits/{permit_id}:
+    get:
+        summary: Get a permit by ID
+        tags: [Permits]
+        description: Use this endpoint to get details about a specific permit by its ID.
+        operationId: getPermitById
+        security:
+          - bearerAuth: []
+        parameters:
+          - in: path
+            name: permit_id
+            required: true
+            schema:
+              type: integer
+        responses:
+          200:
+            description: Successful operation
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Permit'
+          400:
+            $ref: '#/components/responses/BadRequest'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/InternalServerError'
+    put:
+        summary: Update a permit by ID
+        tags: [Permits]
+        description: This endpoint updates a permit's details.
+        operationId: updatePermit
+        security:
+          - bearerAuth: []
+        parameters:
+          - in: path
+            name: permit_id
+            required: true
+            schema:
+              type: integer
+        requestBody:
+          description: The permit's information
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermitUpdate'
+        responses:
+          200:
+            description: Permit updated successfully
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Permit with ID updated successfully
+          400:
+            $ref: '#/components/responses/BadRequest'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/InternalServerError'
+
+    delete:
+        summary: Delete a permit by ID
+        tags: [Permits]
+        description: This endpoint deletes a permit by its ID.
+        operationId: deletePermit
+        security:
+          - bearerAuth: []
+        parameters:
+          - in: path
+            name: permit_id
+            required: true
+            schema:
+              type: integer
+        responses:
+          204:
+            description: Permit removed successfully
+          400:
+            $ref: '#/components/responses/BadRequest'
+          404:
+            $ref: '#/components/responses/NotFound'
+          500:
+            $ref: '#/components/responses/InternalServerError'

@@ -1,0 +1,864 @@
+openapi: 3.0.0
+info:
+  title: Converted from load.schema.yaml with typeconv
+  version: '1'
+  x-id: load.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/load.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    ELoadBrokerStatus:
+      enum:
+        - Open
+        - Published
+        - Booked
+      title: ELoadBrokerStatus
+      type: string
+    ELoadCarrierStatus:
+      enum:
+        - Completed
+        - Assigned
+        - Enroute
+        - Created
+        - Accepted
+        - Loading
+        - Unloading
+        - Cancelled
+        - Rejected
+        - Delayed
+        - Checked-in at Pickup
+        - Checked-out at Pickup
+        - Checked-in at Drop-off
+        - Checked-out at Drop-off
+      title: ELoadCarrierStatus
+      type: string
+    Load:
+      properties:
+        id:
+          title: Load.id
+          type: number
+        broker_id:
+          title: Load.broker_id
+          type: number
+        primary_driver_id:
+          title: Load.primary_driver_id
+          type: number
+        secondary_driver_id:
+          title: Load.secondary_driver_id
+          type: number
+        trailer_id:
+          title: Load.trailer_id
+          type: number
+        truck_id:
+          title: Load.truck_id
+          type: number
+        status:
+          title: Load.status
+        total_miles:
+          title: Load.total_miles
+          type: number
+        rate_per_mile:
+          title: Load.rate_per_mile
+          type: number
+        source:
+          title: Load.source
+          type: string
+        estimated_duration_minutes:
+          title: Load.estimated_duration_minutes
+          type: number
+        estimated_fuel_surcharge:
+          title: Load.estimated_fuel_surcharge
+          type: number
+        total_payout:
+          title: Load.total_payout
+          type: number
+        pickup_address_line1:
+          title: Load.pickup_address_line1
+          type: string
+        pickup_address_line2:
+          title: Load.pickup_address_line2
+          type: string
+        pickup_city:
+          title: Load.pickup_city
+          type: string
+        pickup_state:
+          title: Load.pickup_state
+          type: string
+        pickup_zip_code:
+          title: Load.pickup_zip_code
+          type: string
+        pickup_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.pickup_date
+        drop_off_address_line1:
+          title: Load.drop_off_address_line1
+          type: string
+        drop_off_address_line2:
+          title: Load.drop_off_address_line2
+          type: string
+        drop_off_city:
+          title: Load.drop_off_city
+          type: string
+        drop_off_state:
+          title: Load.drop_off_state
+          type: string
+        drop_off_zip_code:
+          title: Load.drop_off_zip_code
+          type: string
+        drop_off_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.drop_off_date
+        carrier_revenue:
+          title: Load.carrier_revenue
+          type: number
+        customer_id:
+          title: Load.customer_id
+          type: number
+        commodity_type:
+          title: Load.commodity_type
+          type: string
+        broker_revenue:
+          title: Load.broker_revenue
+          type: number
+        broker_status:
+          $ref: '#/components/schemas/ELoadBrokerStatus'
+          title: Load.broker_status
+        max_buy:
+          title: Load.max_buy
+          type: number
+        buy_now:
+          title: Load.buy_now
+          type: number
+        loading_type:
+          title: Load.loading_type
+          type: string
+        unloading_type:
+          title: Load.unloading_type
+          type: string
+        is_trailer_required:
+          title: Load.is_trailer_required
+          type: boolean
+        load_stop:
+          $ref: '#/components/schemas/LoadStop'
+          title: Load.load_stop
+      required:
+        - id
+        - pickup_address_line1
+        - pickup_city
+        - pickup_state
+        - pickup_zip_code
+        - pickup_date
+        - drop_off_address_line1
+        - drop_off_city
+        - drop_off_state
+        - drop_off_zip_code
+        - drop_off_date
+        - loading_type
+        - unloading_type
+        - is_trailer_required
+        - load_stop
+      additionalProperties: false
+      title: Load
+      type: object
+    LoadForBroker:
+      properties:
+        id:
+          title: Load.id
+          type: number
+        broker_id:
+          title: Load.broker_id
+          type: number
+        primary_driver_id:
+          title: Load.primary_driver_id
+          type: number
+        secondary_driver_id:
+          title: Load.secondary_driver_id
+          type: number
+        trailer_id:
+          title: Load.trailer_id
+          type: number
+        truck_id:
+          title: Load.truck_id
+          type: number
+        status:
+          title: Load.status
+        total_miles:
+          title: Load.total_miles
+          type: number
+        rate_per_mile:
+          title: Load.rate_per_mile
+          type: number
+        source:
+          title: Load.source
+          type: string
+        estimated_duration_minutes:
+          title: Load.estimated_duration_minutes
+          type: number
+        estimated_fuel_surcharge:
+          title: Load.estimated_fuel_surcharge
+          type: number
+        total_payout:
+          title: Load.total_payout
+          type: number
+        pickup_address_line1:
+          title: Load.pickup_address_line1
+          type: string
+        pickup_address_line2:
+          title: Load.pickup_address_line2
+          type: string
+        pickup_city:
+          title: Load.pickup_city
+          type: string
+        pickup_state:
+          title: Load.pickup_state
+          type: string
+        pickup_zip_code:
+          title: Load.pickup_zip_code
+          type: string
+        pickup_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.pickup_date
+        drop_off_address_line1:
+          title: Load.drop_off_address_line1
+          type: string
+        drop_off_address_line2:
+          title: Load.drop_off_address_line2
+          type: string
+        drop_off_city:
+          title: Load.drop_off_city
+          type: string
+        drop_off_state:
+          title: Load.drop_off_state
+          type: string
+        drop_off_zip_code:
+          title: Load.drop_off_zip_code
+          type: string
+        drop_off_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.drop_off_date
+        customer_id:
+          title: Load.customer_id
+          type: number
+        commodity_type:
+          title: Load.commodity_type
+          type: string
+        broker_revenue:
+          title: Load.broker_revenue
+          type: number
+        broker_status:
+          $ref: '#/components/schemas/ELoadBrokerStatus'
+          title: Load.broker_status
+        max_buy:
+          title: Load.max_buy
+          type: number
+        buy_now:
+          title: Load.buy_now
+          type: number
+        loading_type:
+          title: Load.loading_type
+          type: string
+        unloading_type:
+          title: Load.unloading_type
+          type: string
+        is_trailer_required:
+          title: Load.is_trailer_required
+          type: boolean
+        load_stop:
+          $ref: '#/components/schemas/LoadStop'
+          title: Load.load_stop
+      required:
+        - id
+        - pickup_address_line1
+        - pickup_city
+        - pickup_state
+        - pickup_zip_code
+        - pickup_date
+        - drop_off_address_line1
+        - drop_off_city
+        - drop_off_state
+        - drop_off_zip_code
+        - drop_off_date
+        - loading_type
+        - unloading_type
+        - is_trailer_required
+        - load_stop
+      additionalProperties: false
+      title: LoadForBroker
+      type: object
+    LoadForCarrier:
+      properties:
+        id:
+          title: Load.id
+          type: number
+        broker_id:
+          title: Load.broker_id
+          type: number
+        primary_driver_id:
+          title: Load.primary_driver_id
+          type: number
+        secondary_driver_id:
+          title: Load.secondary_driver_id
+          type: number
+        trailer_id:
+          title: Load.trailer_id
+          type: number
+        truck_id:
+          title: Load.truck_id
+          type: number
+        status:
+          title: Load.status
+        total_miles:
+          title: Load.total_miles
+          type: number
+        rate_per_mile:
+          title: Load.rate_per_mile
+          type: number
+        source:
+          title: Load.source
+          type: string
+        estimated_duration_minutes:
+          title: Load.estimated_duration_minutes
+          type: number
+        estimated_fuel_surcharge:
+          title: Load.estimated_fuel_surcharge
+          type: number
+        total_payout:
+          title: Load.total_payout
+          type: number
+        pickup_address_line1:
+          title: Load.pickup_address_line1
+          type: string
+        pickup_address_line2:
+          title: Load.pickup_address_line2
+          type: string
+        pickup_city:
+          title: Load.pickup_city
+          type: string
+        pickup_state:
+          title: Load.pickup_state
+          type: string
+        pickup_zip_code:
+          title: Load.pickup_zip_code
+          type: string
+        pickup_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.pickup_date
+        drop_off_address_line1:
+          title: Load.drop_off_address_line1
+          type: string
+        drop_off_address_line2:
+          title: Load.drop_off_address_line2
+          type: string
+        drop_off_city:
+          title: Load.drop_off_city
+          type: string
+        drop_off_state:
+          title: Load.drop_off_state
+          type: string
+        drop_off_zip_code:
+          title: Load.drop_off_zip_code
+          type: string
+        drop_off_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.drop_off_date
+        carrier_revenue:
+          title: Load.carrier_revenue
+          type: number
+        customer_id:
+          title: Load.customer_id
+          type: number
+        commodity_type:
+          title: Load.commodity_type
+          type: string
+        broker_status:
+          $ref: '#/components/schemas/ELoadBrokerStatus'
+          title: Load.broker_status
+        buy_now:
+          title: Load.buy_now
+          type: number
+        loading_type:
+          title: Load.loading_type
+          type: string
+        unloading_type:
+          title: Load.unloading_type
+          type: string
+        is_trailer_required:
+          title: Load.is_trailer_required
+          type: boolean
+        load_stop:
+          $ref: '#/components/schemas/LoadStop'
+          title: Load.load_stop
+      required:
+        - id
+        - pickup_address_line1
+        - pickup_city
+        - pickup_state
+        - pickup_zip_code
+        - pickup_date
+        - drop_off_address_line1
+        - drop_off_city
+        - drop_off_state
+        - drop_off_zip_code
+        - drop_off_date
+        - loading_type
+        - unloading_type
+        - is_trailer_required
+        - load_stop
+      additionalProperties: false
+      title: LoadForCarrier
+      type: object
+    LoadCreateForBroker:
+      properties:
+        pickup_address_line1:
+          title: Load.pickup_address_line1
+          type: string
+        pickup_address_line2:
+          title: Load.pickup_address_line2
+          type: string
+        pickup_city:
+          title: Load.pickup_city
+          type: string
+        pickup_state:
+          title: Load.pickup_state
+          type: string
+        pickup_zip_code:
+          title: Load.pickup_zip_code
+          type: string
+        pickup_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.pickup_date
+        drop_off_address_line1:
+          title: Load.drop_off_address_line1
+          type: string
+        drop_off_address_line2:
+          title: Load.drop_off_address_line2
+          type: string
+        drop_off_city:
+          title: Load.drop_off_city
+          type: string
+        drop_off_state:
+          title: Load.drop_off_state
+          type: string
+        drop_off_zip_code:
+          title: Load.drop_off_zip_code
+          type: string
+        drop_off_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.drop_off_date
+        customer_id:
+          title: Load.customer_id
+          type: number
+        commodity_type:
+          title: Load.commodity_type
+          type: string
+        broker_revenue:
+          title: Load.broker_revenue
+          type: number
+        max_buy:
+          title: Load.max_buy
+          type: number
+        buy_now:
+          title: Load.buy_now
+          type: number
+        loading_type:
+          title: Load.loading_type
+          type: string
+        unloading_type:
+          title: Load.unloading_type
+          type: string
+        is_trailer_required:
+          title: Load.is_trailer_required
+          type: boolean
+        load_stops:
+          items:
+            $ref: '#/components/schemas/LoadStopCreate'
+            title: load_stops.[]
+          title: load_stops
+          type: array
+      required:
+        - pickup_address_line1
+        - pickup_city
+        - pickup_state
+        - pickup_zip_code
+        - pickup_date
+        - drop_off_address_line1
+        - drop_off_city
+        - drop_off_state
+        - drop_off_zip_code
+        - drop_off_date
+        - loading_type
+        - unloading_type
+        - is_trailer_required
+      additionalProperties: false
+      title: LoadCreateForBroker
+      type: object
+    LoadCreateForCarrier:
+      properties:
+        primary_driver_id:
+          title: Load.primary_driver_id
+          type: number
+        secondary_driver_id:
+          title: Load.secondary_driver_id
+          type: number
+        trailer_id:
+          title: Load.trailer_id
+          type: number
+        truck_id:
+          title: Load.truck_id
+          type: number
+        rate_per_mile:
+          title: Load.rate_per_mile
+          type: number
+        estimated_duration_minutes:
+          title: Load.estimated_duration_minutes
+          type: number
+        estimated_fuel_surcharge:
+          title: Load.estimated_fuel_surcharge
+          type: number
+        pickup_address_line1:
+          title: Load.pickup_address_line1
+          type: string
+        pickup_address_line2:
+          title: Load.pickup_address_line2
+          type: string
+        pickup_city:
+          title: Load.pickup_city
+          type: string
+        pickup_state:
+          title: Load.pickup_state
+          type: string
+        pickup_zip_code:
+          title: Load.pickup_zip_code
+          type: string
+        pickup_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.pickup_date
+        drop_off_address_line1:
+          title: Load.drop_off_address_line1
+          type: string
+        drop_off_address_line2:
+          title: Load.drop_off_address_line2
+          type: string
+        drop_off_city:
+          title: Load.drop_off_city
+          type: string
+        drop_off_state:
+          title: Load.drop_off_state
+          type: string
+        drop_off_zip_code:
+          title: Load.drop_off_zip_code
+          type: string
+        drop_off_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.drop_off_date
+        carrier_revenue:
+          title: Load.carrier_revenue
+          type: number
+        loading_type:
+          title: Load.loading_type
+          type: string
+        unloading_type:
+          title: Load.unloading_type
+          type: string
+        load_stops:
+          items:
+            $ref: '#/components/schemas/LoadStopCreate'
+            title: load_stops.[]
+          title: load_stops
+          type: array
+      required:
+        - pickup_address_line1
+        - pickup_city
+        - pickup_state
+        - pickup_zip_code
+        - pickup_date
+        - drop_off_address_line1
+        - drop_off_city
+        - drop_off_state
+        - drop_off_zip_code
+        - drop_off_date
+        - loading_type
+        - unloading_type
+      additionalProperties: false
+      title: LoadCreateForCarrier
+      type: object
+    LoadUpdateForBroker:
+      properties:
+        broker_status:
+          $ref: '#/components/schemas/ELoadBrokerStatus'
+          title: Load.broker_status
+      additionalProperties: false
+      title: LoadUpdateForBroker
+      type: object
+    LoadUpdateForCarrier:
+      properties:
+        primary_driver_id:
+          title: Load.primary_driver_id
+          type: number
+        secondary_driver_id:
+          title: Load.secondary_driver_id
+          type: number
+        trailer_id:
+          title: Load.trailer_id
+          type: number
+        truck_id:
+          title: Load.truck_id
+          type: number
+        pickup_address_line1:
+          title: Load.pickup_address_line1
+          type: string
+        pickup_address_line2:
+          title: Load.pickup_address_line2
+          type: string
+        pickup_city:
+          title: Load.pickup_city
+          type: string
+        pickup_state:
+          title: Load.pickup_state
+          type: string
+        pickup_zip_code:
+          title: Load.pickup_zip_code
+          type: string
+        pickup_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.pickup_date
+        drop_off_address_line1:
+          title: Load.drop_off_address_line1
+          type: string
+        drop_off_address_line2:
+          title: Load.drop_off_address_line2
+          type: string
+        drop_off_city:
+          title: Load.drop_off_city
+          type: string
+        drop_off_state:
+          title: Load.drop_off_state
+          type: string
+        drop_off_zip_code:
+          title: Load.drop_off_zip_code
+          type: string
+        drop_off_date:
+          $ref: '#/components/schemas/Date'
+          title: Load.drop_off_date
+        customer_id:
+          title: Load.customer_id
+          type: number
+        commodity_type:
+          title: Load.commodity_type
+          type: string
+        broker_revenue:
+          title: Load.broker_revenue
+          type: number
+        loading_type:
+          title: Load.loading_type
+          type: string
+        unloading_type:
+          title: Load.unloading_type
+          type: string
+        is_trailer_required:
+          title: Load.is_trailer_required
+          type: boolean
+      required:
+        - pickup_address_line1
+        - pickup_city
+        - pickup_state
+        - pickup_zip_code
+        - pickup_date
+        - drop_off_address_line1
+        - drop_off_city
+        - drop_off_state
+        - drop_off_zip_code
+        - drop_off_date
+        - loading_type
+        - unloading_type
+        - is_trailer_required
+      additionalProperties: false
+      title: LoadUpdateForCarrier
+      type: object
+    LoadStop:
+      properties:
+        id:
+          title: LoadStop.id
+          type: number
+        load_id:
+          title: LoadStop.load_id
+          type: number
+        pickup_address_line1:
+          title: LoadStop.pickup_address_line1
+          type: string
+        pickup_address_line2:
+          title: LoadStop.pickup_address_line2
+          type: string
+        pickup_city:
+          title: LoadStop.pickup_city
+          type: string
+        pickup_state:
+          title: LoadStop.pickup_state
+          type: string
+        pickup_zip_code:
+          title: LoadStop.pickup_zip_code
+          type: string
+        pickup_date:
+          $ref: '#/components/schemas/Date'
+          title: LoadStop.pickup_date
+        drop_off_address_line1:
+          title: LoadStop.drop_off_address_line1
+          type: string
+        drop_off_address_line2:
+          title: LoadStop.drop_off_address_line2
+          type: string
+        drop_off_city:
+          title: LoadStop.drop_off_city
+          type: string
+        drop_off_state:
+          title: LoadStop.drop_off_state
+          type: string
+        drop_off_zip_code:
+          title: LoadStop.drop_off_zip_code
+          type: string
+        drop_off_date:
+          $ref: '#/components/schemas/Date'
+          title: LoadStop.drop_off_date
+        payout:
+          title: LoadStop.payout
+          type: number
+        distance:
+          title: LoadStop.distance
+          type: number
+        weight:
+          title: LoadStop.weight
+          type: number
+        first_name:
+          title: LoadStop.first_name
+          type: string
+        last_name:
+          title: LoadStop.last_name
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: LoadStop.email
+        phone_number:
+          title: LoadStop.phone_number
+          type: string
+        instructions:
+          title: LoadStop.instructions
+          type: string
+      required:
+        - id
+        - load_id
+        - pickup_address_line1
+        - pickup_city
+        - pickup_state
+        - pickup_zip_code
+        - pickup_date
+        - drop_off_address_line1
+        - drop_off_city
+        - drop_off_state
+        - drop_off_zip_code
+        - drop_off_date
+        - payout
+        - distance
+        - weight
+        - first_name
+        - last_name
+        - email
+        - phone_number
+      additionalProperties: false
+      title: LoadStop
+      type: object
+    LoadStopCreate:
+      properties:
+        pickup_address_line1:
+          title: LoadStop.pickup_address_line1
+          type: string
+        pickup_address_line2:
+          title: LoadStop.pickup_address_line2
+          type: string
+        pickup_city:
+          title: LoadStop.pickup_city
+          type: string
+        pickup_state:
+          title: LoadStop.pickup_state
+          type: string
+        pickup_zip_code:
+          title: LoadStop.pickup_zip_code
+          type: string
+        pickup_date:
+          $ref: '#/components/schemas/Date'
+          title: LoadStop.pickup_date
+        drop_off_address_line1:
+          title: LoadStop.drop_off_address_line1
+          type: string
+        drop_off_address_line2:
+          title: LoadStop.drop_off_address_line2
+          type: string
+        drop_off_city:
+          title: LoadStop.drop_off_city
+          type: string
+        drop_off_state:
+          title: LoadStop.drop_off_state
+          type: string
+        drop_off_zip_code:
+          title: LoadStop.drop_off_zip_code
+          type: string
+        drop_off_date:
+          $ref: '#/components/schemas/Date'
+          title: LoadStop.drop_off_date
+        payout:
+          title: LoadStop.payout
+          type: number
+        distance:
+          title: LoadStop.distance
+          type: number
+        weight:
+          title: LoadStop.weight
+          type: number
+        first_name:
+          title: LoadStop.first_name
+          type: string
+        last_name:
+          title: LoadStop.last_name
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: LoadStop.email
+        phone_number:
+          title: LoadStop.phone_number
+          type: string
+        instructions:
+          title: LoadStop.instructions
+          type: string
+      required:
+        - pickup_address_line1
+        - pickup_city
+        - pickup_state
+        - pickup_zip_code
+        - pickup_date
+        - drop_off_address_line1
+        - drop_off_city
+        - drop_off_state
+        - drop_off_zip_code
+        - drop_off_date
+        - payout
+        - distance
+        - weight
+        - first_name
+        - last_name
+        - email
+        - phone_number
+      additionalProperties: false
+      title: LoadStopCreate
+      type: object
+    Date:
+      title: Date
+      enum:
+        - '2023-08-18'
+      type: string
+    Email:
+      title: Email
+      enum:
+        - example@gmail.com
+      type: string

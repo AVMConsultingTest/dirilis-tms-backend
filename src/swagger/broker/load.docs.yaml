@@ -1,0 +1,217 @@
+paths:
+ /broker/loads:
+    post:
+      summary: Create a new load
+      tags: [LoadsForBroker]
+      description: This endpoint creates a new load.
+      operationId: createLoad
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: The load's information
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "#/components/schemas/LoadCreateForBroker"
+                - $ref: "#/components/schemas/LoadCreateForBroker"
+      responses:
+        201:
+          description: Load created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+    get:
+      summary: Retrieve loads
+      tags: [LoadsForBroker]
+      description: This endpoint retrieves all loads.
+      operationId: getLoadsForBroker
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: query
+          name: page_number
+          schema:
+            type: integer
+            minimum: 1
+        - in: query
+          name: page_size
+          schema:
+            type: integer
+            minimum: 1
+        - in: query
+          name: broker_status
+          schema:
+            $ref: "#/components/schemas/ELoadBrokerStatus"
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      oneOf:
+                        - $ref: "#/components/schemas/LoadForBroker"
+                        - $ref: '#/components/schemas/LoadForBroker'
+ /broker/loads/{load_id}:
+    get:
+      tags: [LoadsForBroker]
+      security:
+        - bearerAuth: []
+      summary: Retrieve load by id
+      description: Fetches a load by id
+      parameters:
+        - name: load_id
+          in: path
+          description: The id of load
+          required: true
+          schema:
+            type: integer
+            default: 1
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                - $ref: "#/components/schemas/LoadForBroker"
+    put:
+      summary: Update a load by ID
+      tags: [LoadsForBroker]
+      description: This endpoint updates a load's details.
+      operationId: updateLoad
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: load_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: The load's information
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoadUpdateForBroker"
+      responses:
+        200:
+          description: Load updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Load with ID updated successfully
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+ /broker/loads/{load_id}/load-offers/:
+    get:
+      summary: Retrieve load offers
+      tags: [LoadsForBroker]
+      description: This endpoint retrieves all load offers.
+      operationId: getLoadsForBroker
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: load_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/LoadOffer"
+ /broker/loads/{load_id}/load-offers/{load_offer_id}:
+    put:
+      summary: Update status of load offer by ID
+      tags: [LoadsForBroker]
+      description: This endpoint updates a load offer's details.
+      operationId: updateLoad
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: load_id
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: load_offer_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: The load offer's information
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoadOfferUpdate"
+      responses:
+        200:
+          description: Load updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Load with ID updated successfully
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"

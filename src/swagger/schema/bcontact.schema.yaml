@@ -1,0 +1,110 @@
+openapi: 3.0.0
+info:
+  title: Converted from bcontact.schema.yaml with typeconv
+  version: '1'
+  x-id: bcontact.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/bcontact.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    BContact:
+      properties:
+        id:
+          title: BContact.id
+          type: number
+        first_name:
+          title: BContact.first_name
+          type: string
+        last_name:
+          title: BContact.last_name
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: BContact.email
+        phone_number:
+          title: BContact.phone_number
+          type: string
+        role:
+          title: BContact.role
+          type: string
+        verified:
+          $ref: '#/components/schemas/EBool'
+          title: BContact.verified
+      required:
+        - id
+        - first_name
+        - last_name
+        - email
+        - phone_number
+        - role
+        - verified
+      additionalProperties: false
+      title: BContact
+      type: object
+    BContactCreate:
+      properties:
+        first_name:
+          title: BContact.first_name
+          type: string
+        last_name:
+          title: BContact.last_name
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: BContact.email
+        phone_number:
+          title: BContact.phone_number
+          type: string
+        role:
+          title: BContact.role
+          type: string
+        verified:
+          $ref: '#/components/schemas/EBool'
+          title: BContact.verified
+      required:
+        - first_name
+        - last_name
+        - email
+        - phone_number
+        - role
+        - verified
+      additionalProperties: false
+      title: BContactCreate
+      type: object
+    BContactUpdate:
+      properties:
+        first_name:
+          title: BContact.first_name
+          type: string
+        last_name:
+          title: BContact.last_name
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: BContact.email
+        phone_number:
+          title: BContact.phone_number
+          type: string
+        role:
+          title: BContact.role
+          type: string
+        verified:
+          $ref: '#/components/schemas/EBool'
+          title: BContact.verified
+      additionalProperties: false
+      title: BContactUpdate
+      type: object
+    Email:
+      title: Email
+      enum:
+        - example@gmail.com
+      type: string
+    EBool:
+      enum:
+        - 'Yes'
+        - 'No'
+      title: EBool
+      type: string

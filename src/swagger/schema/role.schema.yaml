@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  title: Converted from role.schema.yaml with typeconv
+  version: '1'
+  x-id: role.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/role.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Permission:
+      properties:
+        id:
+          title: Permission.id
+          type: number
+        route:
+          $ref: '#/components/schemas/EPermissionRoute'
+          title: Permission.route
+        can_write:
+          title: Permission.can_write
+          type: boolean
+        can_read:
+          title: Permission.can_read
+          type: boolean
+        role_id:
+          title: Permission.role_id
+          type: number
+      required:
+        - id
+        - route
+        - can_write
+        - can_read
+        - role_id
+      additionalProperties: false
+      title: Permission
+      type: object
+    PermissionCreate:
+      properties:
+        route:
+          $ref: '#/components/schemas/EPermissionRoute'
+          title: Permission.route
+        can_write:
+          title: Permission.can_write
+          type: boolean
+        can_read:
+          title: Permission.can_read
+          type: boolean
+        role_id:
+          title: Permission.role_id
+          type: number
+      required:
+        - route
+        - can_write
+        - can_read
+        - role_id
+      additionalProperties: false
+      title: PermissionCreate
+      type: object
+    PermissionUpdate:
+      properties:
+        can_write:
+          title: Permission.can_write
+          type: boolean
+        can_read:
+          title: Permission.can_read
+          type: boolean
+      additionalProperties: false
+      title: PermissionUpdate
+      type: object
+    Role:
+      properties:
+        id:
+          title: Role.id
+          type: number
+        name:
+          title: Role.name
+          type: string
+        company_id:
+          title: Role.company_id
+          type: number
+        permissions:
+          items:
+            $ref: '#/components/schemas/Permission'
+            title: Role.permissions.[]
+          title: Role.permissions
+          type: array
+      required:
+        - id
+        - name
+        - company_id
+        - permissions
+      additionalProperties: false
+      title: Role
+      type: object
+    RoleCreate:
+      properties:
+        name:
+          title: Role.name
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/PermissionCreateForRole'
+            title: permissions.[]
+          title: permissions
+          type: array
+      required:
+        - name
+        - permissions
+      additionalProperties: false
+      title: RoleCreate
+      type: object
+    RoleUpdate:
+      properties:
+        name:
+          title: Role.name
+          type: string
+      required:
+        - name
+      additionalProperties: false
+      title: RoleUpdate
+      type: object
+    UserRole:
+      properties:
+        id:
+          title: UserRole.id
+          type: number
+        user_id:
+          title: UserRole.user_id
+          type: number
+        role_id:
+          title: UserRole.role_id
+          type: number
+      required:
+        - id
+        - user_id
+        - role_id
+      additionalProperties: false
+      title: UserRole
+      type: object
+    UserRoleCreate:
+      properties:
+        user_id:
+          title: UserRole.user_id
+          type: number
+        role_id:
+          title: UserRole.role_id
+          type: number
+      required:
+        - user_id
+        - role_id
+      additionalProperties: false
+      title: UserRoleCreate
+      type: object
+    EPermissionRoute:
+      enum:
+        - accidents
+        - alerts
+        - applicants
+        - brokers
+        - clients
+        - companies
+        - devices
+        - drivers
+        - drug-tests
+        - incidents
+        - inspections
+        - loads
+        - payables
+        - payroll
+        - permits
+        - samba
+        - services
+        - summaries
+        - trailers
+        - trainings
+        - trucks
+        - users
+        - vendors
+        - permissions
+        - user-roles
+        - roles
+        - eld
+        - factorings
+        - teams
+      title: EPermissionRoute
+      type: string
+    PermissionCreateForRole:
+      properties:
+        route:
+          $ref: '#/components/schemas/EPermissionRoute'
+          title: Permission.route
+        can_write:
+          title: Permission.can_write
+          type: boolean
+        can_read:
+          title: Permission.can_read
+          type: boolean
+      required:
+        - route
+        - can_write
+        - can_read
+      additionalProperties: false
+      title: PermissionCreateForRole
+      type: object

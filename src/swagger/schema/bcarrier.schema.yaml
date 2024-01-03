@@ -1,0 +1,154 @@
+openapi: 3.0.0
+info:
+  title: Converted from bcarrier.schema.yaml with typeconv
+  version: '1'
+  x-id: bcarrier.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/bcarrier.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    BCarrier:
+      properties:
+        id:
+          title: BCarrier.id
+          type: number
+        name:
+          title: BCarrier.name
+          type: string
+        dba_name:
+          title: BCarrier.dba_name
+          type: string
+        mc_number:
+          title: BCarrier.mc_number
+          type: string
+        dot_number:
+          title: BCarrier.dot_number
+          type: string
+        active_insurance:
+          $ref: '#/components/schemas/EBool'
+          title: BCarrier.active_insurance
+        insurance_expiration:
+          $ref: '#/components/schemas/Date'
+          title: BCarrier.insurance_expiration
+        cargo_coverage:
+          title: BCarrier.cargo_coverage
+          type: string
+        status:
+          title: BCarrier.status
+          type: string
+        home_base_city:
+          title: BCarrier.home_base_city
+          type: string
+        home_base_state:
+          title: BCarrier.home_base_state
+          type: string
+      required:
+        - id
+        - name
+        - dba_name
+        - mc_number
+        - dot_number
+        - active_insurance
+        - insurance_expiration
+        - cargo_coverage
+        - status
+        - home_base_city
+        - home_base_state
+      additionalProperties: false
+      title: BCarrier
+      type: object
+    BCarrierCreate:
+      properties:
+        name:
+          title: BCarrier.name
+          type: string
+        dba_name:
+          title: BCarrier.dba_name
+          type: string
+        mc_number:
+          title: BCarrier.mc_number
+          type: string
+        dot_number:
+          title: BCarrier.dot_number
+          type: string
+        active_insurance:
+          $ref: '#/components/schemas/EBool'
+          title: BCarrier.active_insurance
+        insurance_expiration:
+          $ref: '#/components/schemas/Date'
+          title: BCarrier.insurance_expiration
+        cargo_coverage:
+          title: BCarrier.cargo_coverage
+          type: string
+        status:
+          title: BCarrier.status
+          type: string
+        home_base_city:
+          title: BCarrier.home_base_city
+          type: string
+        home_base_state:
+          title: BCarrier.home_base_state
+          type: string
+      required:
+        - name
+        - dba_name
+        - mc_number
+        - dot_number
+        - active_insurance
+        - insurance_expiration
+        - cargo_coverage
+        - status
+        - home_base_city
+        - home_base_state
+      additionalProperties: false
+      title: BCarrierCreate
+      type: object
+    BCarrierUpdate:
+      properties:
+        name:
+          title: BCarrier.name
+          type: string
+        dba_name:
+          title: BCarrier.dba_name
+          type: string
+        mc_number:
+          title: BCarrier.mc_number
+          type: string
+        dot_number:
+          title: BCarrier.dot_number
+          type: string
+        active_insurance:
+          $ref: '#/components/schemas/EBool'
+          title: BCarrier.active_insurance
+        insurance_expiration:
+          $ref: '#/components/schemas/Date'
+          title: BCarrier.insurance_expiration
+        cargo_coverage:
+          title: BCarrier.cargo_coverage
+          type: string
+        status:
+          title: BCarrier.status
+          type: string
+        home_base_city:
+          title: BCarrier.home_base_city
+          type: string
+        home_base_state:
+          title: BCarrier.home_base_state
+          type: string
+      additionalProperties: false
+      title: BCarrierUpdate
+      type: object
+    EBool:
+      enum:
+        - 'Yes'
+        - 'No'
+      title: EBool
+      type: string
+    Date:
+      title: Date
+      enum:
+        - '2023-08-18'
+      type: string

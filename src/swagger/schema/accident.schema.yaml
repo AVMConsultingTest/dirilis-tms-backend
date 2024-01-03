@@ -1,0 +1,46 @@
+components:
+  schemas:
+    Accident:
+      type: object
+      required:
+        - driver_id
+        - truck_id
+        - report_date
+        - report_number
+        - report_state
+        - fatal
+        - injury
+        - tow
+        - hazMat
+      properties:
+        driver_id:
+          type: integer
+        truck_id:
+          type: integer
+        report_date:
+          type: string
+          format: date-time
+        report_number:
+          type: string
+        report_state:
+          type: string
+        fatal:
+          type: string
+          enum: ['Yes', 'No']
+        injury:
+          type: string
+          enum: ['Yes', 'No']
+        tow:
+          type: string
+          enum: ['Yes', 'No']
+        haz_mat:
+          type: string
+          enum: ['Yes', 'No']
+        notes:
+          type: string
+    AccidentCreate:
+      $ref: '#/components/schemas/Accident'
+      
+    AccidentUpdate:
+      allOf:
+        - $ref: '#/components/schemas/Accident'

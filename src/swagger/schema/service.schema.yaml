@@ -1,0 +1,175 @@
+openapi: 3.0.0
+info:
+  title: Converted from service.schema.yaml with typeconv
+  version: '1'
+  x-id: service.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/service.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Service:
+      properties:
+        id:
+          title: Service.id
+          type: number
+        vehicle_id:
+          title: Service.vehicle_id
+          type: number
+        vehicle_type:
+          $ref: '#/components/schemas/EServiceVehicleType'
+          title: Service.vehicle_type
+        vehicle_status:
+          title: Service.vehicle_status
+          type: string
+        type:
+          title: Service.type
+          type: string
+        dot_inspection_number:
+          title: Service.dot_inspection_number
+          type: string
+        repair_start_date:
+          $ref: '#/components/schemas/Date'
+          title: Service.repair_start_date
+        repair_completion_date:
+          $ref: '#/components/schemas/Date'
+          title: Service.repair_completion_date
+        repair_description:
+          title: Service.repair_description
+          type: string
+        repair_facility:
+          title: Service.repair_facility
+          type: string
+        notes:
+          title: Service.notes
+          type: string
+        driver_id:
+          title: Service.driver_id
+          type: number
+        vendor_id:
+          title: Service.vendor_id
+          type: number
+      required:
+        - id
+        - vehicle_id
+        - vehicle_type
+        - vehicle_status
+        - type
+        - dot_inspection_number
+        - repair_description
+        - driver_id
+        - vendor_id
+      additionalProperties: false
+      title: Service
+      type: object
+    ServiceCreate:
+      properties:
+        vehicle_id:
+          title: Service.vehicle_id
+          type: number
+        vehicle_type:
+          $ref: '#/components/schemas/EServiceVehicleType'
+          title: Service.vehicle_type
+        type:
+          title: Service.type
+          type: string
+        dot_inspection_number:
+          title: Service.dot_inspection_number
+          type: string
+        repair_start_date:
+          $ref: '#/components/schemas/Date'
+          title: Service.repair_start_date
+        repair_completion_date:
+          $ref: '#/components/schemas/Date'
+          title: Service.repair_completion_date
+        repair_description:
+          title: Service.repair_description
+          type: string
+        repair_facility:
+          title: Service.repair_facility
+          type: string
+        notes:
+          title: Service.notes
+          type: string
+        driver_id:
+          title: Service.driver_id
+          type: number
+        vendor_id:
+          title: Service.vendor_id
+          type: number
+      required:
+        - vehicle_id
+        - vehicle_type
+        - type
+        - dot_inspection_number
+        - repair_description
+        - driver_id
+        - vendor_id
+      additionalProperties: false
+      title: ServiceCreate
+      type: object
+    ServiceUpdate:
+      properties:
+        vehicle_id:
+          title: Service.vehicle_id
+          type: number
+        vehicle_type:
+          $ref: '#/components/schemas/EServiceVehicleType'
+          title: Service.vehicle_type
+        type:
+          title: Service.type
+          type: string
+        dot_inspection_number:
+          title: Service.dot_inspection_number
+          type: string
+        repair_start_date:
+          $ref: '#/components/schemas/Date'
+          title: Service.repair_start_date
+        repair_completion_date:
+          $ref: '#/components/schemas/Date'
+          title: Service.repair_completion_date
+        repair_description:
+          title: Service.repair_description
+          type: string
+        repair_facility:
+          title: Service.repair_facility
+          type: string
+        notes:
+          title: Service.notes
+          type: string
+        driver_id:
+          title: Service.driver_id
+          type: number
+        vendor_id:
+          title: Service.vendor_id
+          type: number
+      additionalProperties: false
+      title: ServiceUpdate
+      type: object
+    ServiceSummary:
+      properties:
+        type1:
+          title: ServiceSummary.type1
+          type: number
+        type2:
+          title: ServiceSummary.type2
+          type: number
+      required:
+        - type1
+        - type2
+      additionalProperties: false
+      title: ServiceSummary
+      type: object
+    EServiceVehicleType:
+      enum:
+        - Truck
+        - Trailer
+      title: EServiceVehicleType
+      type: string
+    Date:
+      title: Date
+      enum:
+        - '2023-08-18'
+      type: string

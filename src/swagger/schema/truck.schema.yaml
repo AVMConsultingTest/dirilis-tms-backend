@@ -1,0 +1,190 @@
+openapi: 3.0.0
+info:
+  title: Converted from truck.schema.yaml with typeconv
+  version: '1'
+  x-id: truck.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/truck.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    ITruck:
+      properties:
+        id:
+          title: ITruck.id
+          type: number
+        unit_number:
+          title: ITruck.unit_number
+          type: string
+        status:
+          title: ITruck.status
+        brand:
+          title: ITruck.brand
+          type: string
+        model:
+          title: ITruck.model
+          type: string
+        year:
+          title: ITruck.year
+          type: string
+        color:
+          title: ITruck.color
+          type: string
+        plate:
+          title: ITruck.plate
+          type: string
+        make:
+          title: ITruck.make
+          type: string
+        fuel_type:
+          title: ITruck.fuel_type
+          type: string
+        gross_weight:
+          title: ITruck.gross_weight
+          type: string
+        number_of_axles:
+          title: ITruck.number_of_axles
+          type: number
+        vin_number:
+          title: ITruck.vin_number
+          type: string
+        ownership_type:
+          title: ITruck.ownership_type
+        owner_driver_id:
+          title: ITruck.owner_driver_id
+          type: number
+        notes:
+          title: ITruck.notes
+          type: string
+      required:
+        - id
+        - unit_number
+        - status
+        - brand
+        - model
+        - year
+        - color
+        - plate
+        - make
+        - fuel_type
+        - gross_weight
+        - number_of_axles
+        - vin_number
+        - ownership_type
+        - notes
+      additionalProperties: false
+      title: ITruck
+      type: object
+    ITruckCreate:
+      properties:
+        unit_number:
+          title: ITruck.unit_number
+          type: string
+        status:
+          title: ITruck.status
+        brand:
+          title: ITruck.brand
+          type: string
+        model:
+          title: ITruck.model
+          type: string
+        year:
+          title: ITruck.year
+          type: string
+        color:
+          title: ITruck.color
+          type: string
+        plate:
+          title: ITruck.plate
+          type: string
+        make:
+          title: ITruck.make
+          type: string
+        fuel_type:
+          title: ITruck.fuel_type
+          type: string
+        gross_weight:
+          title: ITruck.gross_weight
+          type: string
+        number_of_axles:
+          title: ITruck.number_of_axles
+          type: number
+        vin_number:
+          title: ITruck.vin_number
+          type: string
+        ownership_type:
+          title: ITruck.ownership_type
+        owner_driver_id:
+          title: ITruck.owner_driver_id
+          type: number
+        notes:
+          title: ITruck.notes
+          type: string
+      required:
+        - unit_number
+        - status
+        - brand
+        - model
+        - year
+        - color
+        - plate
+        - make
+        - fuel_type
+        - gross_weight
+        - number_of_axles
+        - vin_number
+        - ownership_type
+        - notes
+      additionalProperties: false
+      title: ITruckCreate
+      type: object
+    ITruckUpdate:
+      properties:
+        unit_number:
+          title: ITruck.unit_number
+          type: string
+        status:
+          title: ITruck.status
+        brand:
+          title: ITruck.brand
+          type: string
+        model:
+          title: ITruck.model
+          type: string
+        year:
+          title: ITruck.year
+          type: string
+        color:
+          title: ITruck.color
+          type: string
+        plate:
+          title: ITruck.plate
+          type: string
+        make:
+          title: ITruck.make
+          type: string
+        fuel_type:
+          title: ITruck.fuel_type
+          type: string
+        gross_weight:
+          title: ITruck.gross_weight
+          type: string
+        number_of_axles:
+          title: ITruck.number_of_axles
+          type: number
+        vin_number:
+          title: ITruck.vin_number
+          type: string
+        ownership_type:
+          title: ITruck.ownership_type
+        owner_driver_id:
+          title: ITruck.owner_driver_id
+          type: number
+        notes:
+          title: ITruck.notes
+          type: string
+      additionalProperties: false
+      title: ITruckUpdate
+      type: object

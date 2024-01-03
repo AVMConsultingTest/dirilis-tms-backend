@@ -1,0 +1,272 @@
+openapi: 3.0.0
+info:
+  title: Converted from checkin_checkout.yaml with typeconv
+  version: '1'
+  x-id: checkin_checkout.yaml
+  x-comment: >-
+    Generated from src/interfaces/checkin_checkout.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    CheckinCheckout:
+      properties:
+        id:
+          title: CheckinCheckout.id
+          type: number
+        type:
+          $ref: '#/components/schemas/ECheckinCheckoutType'
+          title: CheckinCheckout.type
+        ifta_number:
+          title: CheckinCheckout.ifta_number
+          type: string
+        ny_number:
+          title: CheckinCheckout.ny_number
+          type: string
+        binder:
+          $ref: '#/components/schemas/ECheckinCheckoutBinder'
+          title: CheckinCheckout.binder
+        ky_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.ky_permit_current
+        nv_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.nv_permit_current
+        nm_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.nm_permit_current
+        or_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.or_permit_current
+        ct_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.ct_permit_current
+        valid_insurance:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.valid_insurance
+        registiration_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.registiration_current
+        tablet_charger:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.tablet_charger
+        fuel_card:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.fuel_card
+        mileage:
+          title: CheckinCheckout.mileage
+          type: string
+        damage:
+          title: CheckinCheckout.damage
+          type: string
+        damage_type:
+          title: CheckinCheckout.damage_type
+          type: string
+        fleet_rep:
+          title: CheckinCheckout.fleet_rep
+          type: string
+        primary_driver_id:
+          title: CheckinCheckout.primary_driver_id
+          type: number
+        secondary_driver_id:
+          title: CheckinCheckout.secondary_driver_id
+          type: number
+        truck_id:
+          title: CheckinCheckout.truck_id
+          type: number
+      required:
+        - id
+        - type
+        - ifta_number
+        - ny_number
+        - binder
+        - ky_permit_current
+        - nv_permit_current
+        - nm_permit_current
+        - or_permit_current
+        - ct_permit_current
+        - valid_insurance
+        - registiration_current
+        - tablet_charger
+        - fuel_card
+        - mileage
+        - damage
+        - damage_type
+        - fleet_rep
+        - primary_driver_id
+        - secondary_driver_id
+        - truck_id
+      additionalProperties: false
+      title: CheckinCheckout
+      type: object
+    CheckinCheckoutCreate:
+      properties:
+        type:
+          $ref: '#/components/schemas/ECheckinCheckoutType'
+          title: CheckinCheckout.type
+        ifta_number:
+          title: CheckinCheckout.ifta_number
+          type: string
+        ny_number:
+          title: CheckinCheckout.ny_number
+          type: string
+        binder:
+          $ref: '#/components/schemas/ECheckinCheckoutBinder'
+          title: CheckinCheckout.binder
+        ky_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.ky_permit_current
+        nv_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.nv_permit_current
+        nm_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.nm_permit_current
+        or_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.or_permit_current
+        ct_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.ct_permit_current
+        valid_insurance:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.valid_insurance
+        registiration_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.registiration_current
+        tablet_charger:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.tablet_charger
+        fuel_card:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.fuel_card
+        mileage:
+          title: CheckinCheckout.mileage
+          type: string
+        damage:
+          title: CheckinCheckout.damage
+          type: string
+        damage_type:
+          title: CheckinCheckout.damage_type
+          type: string
+        fleet_rep:
+          title: CheckinCheckout.fleet_rep
+          type: string
+        primary_driver_id:
+          title: CheckinCheckout.primary_driver_id
+          type: number
+        secondary_driver_id:
+          title: CheckinCheckout.secondary_driver_id
+          type: number
+        truck_id:
+          title: CheckinCheckout.truck_id
+          type: number
+      required:
+        - type
+        - ifta_number
+        - ny_number
+        - binder
+        - ky_permit_current
+        - nv_permit_current
+        - nm_permit_current
+        - or_permit_current
+        - ct_permit_current
+        - valid_insurance
+        - registiration_current
+        - tablet_charger
+        - fuel_card
+        - mileage
+        - damage
+        - damage_type
+        - fleet_rep
+        - primary_driver_id
+        - secondary_driver_id
+        - truck_id
+      additionalProperties: false
+      title: CheckinCheckoutCreate
+      type: object
+    CheckinCheckoutUpdate:
+      properties:
+        type:
+          $ref: '#/components/schemas/ECheckinCheckoutType'
+          title: CheckinCheckout.type
+        ifta_number:
+          title: CheckinCheckout.ifta_number
+          type: string
+        ny_number:
+          title: CheckinCheckout.ny_number
+          type: string
+        binder:
+          $ref: '#/components/schemas/ECheckinCheckoutBinder'
+          title: CheckinCheckout.binder
+        ky_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.ky_permit_current
+        nv_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.nv_permit_current
+        nm_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.nm_permit_current
+        or_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.or_permit_current
+        ct_permit_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.ct_permit_current
+        valid_insurance:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.valid_insurance
+        registiration_current:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.registiration_current
+        tablet_charger:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.tablet_charger
+        fuel_card:
+          $ref: '#/components/schemas/EBool'
+          title: CheckinCheckout.fuel_card
+        mileage:
+          title: CheckinCheckout.mileage
+          type: string
+        damage:
+          title: CheckinCheckout.damage
+          type: string
+        damage_type:
+          title: CheckinCheckout.damage_type
+          type: string
+        fleet_rep:
+          title: CheckinCheckout.fleet_rep
+          type: string
+        primary_driver_id:
+          title: CheckinCheckout.primary_driver_id
+          type: number
+        secondary_driver_id:
+          title: CheckinCheckout.secondary_driver_id
+          type: number
+        truck_id:
+          title: CheckinCheckout.truck_id
+          type: number
+      additionalProperties: false
+      title: CheckinCheckoutUpdate
+      type: object
+    ECheckinCheckoutType:
+      enum:
+        - In
+        - Out
+      title: ECheckinCheckoutType
+      type: string
+    ECheckinCheckoutBinder:
+      enum:
+        - Provided
+        - Incomplete
+        - NotProvided
+      title: ECheckinCheckoutBinder
+      type: string
+    EBool:
+      enum:
+        - 'Yes'
+        - 'No'
+      title: EBool
+      type: string

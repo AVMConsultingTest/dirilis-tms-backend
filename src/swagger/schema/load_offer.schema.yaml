@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Converted from load_offer.schema.yaml with typeconv
+  version: '1'
+  x-id: load_offer.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/load_offer.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    LoadOffer:
+      properties:
+        id:
+          title: LoadOffer.id
+          type: number
+        load_id:
+          title: LoadOffer.load_id
+          type: number
+        carrier_id:
+          title: LoadOffer.carrier_id
+          type: number
+        rate_per_mile:
+          title: LoadOffer.rate_per_mile
+          type: number
+        all_in_rate:
+          title: LoadOffer.all_in_rate
+          type: number
+        notes:
+          title: LoadOffer.notes
+          type: string
+        source:
+          title: LoadOffer.source
+          type: string
+        joke_offer_rate:
+          title: LoadOffer.joke_offer_rate
+          type: number
+        kpi:
+          title: LoadOffer.kpi
+          type: number
+        status:
+          $ref: '#/components/schemas/ELoadOfferStatus'
+          title: LoadOffer.status
+      required:
+        - id
+        - load_id
+        - carrier_id
+        - rate_per_mile
+        - all_in_rate
+        - source
+        - joke_offer_rate
+        - kpi
+        - status
+      additionalProperties: false
+      title: LoadOffer
+      type: object
+    LoadOfferCreate:
+      properties:
+        load_id:
+          title: LoadOffer.load_id
+          type: number
+        rate_per_mile:
+          title: LoadOffer.rate_per_mile
+          type: number
+        all_in_rate:
+          title: LoadOffer.all_in_rate
+          type: number
+        notes:
+          title: LoadOffer.notes
+          type: string
+        kpi:
+          title: LoadOffer.kpi
+          type: number
+      required:
+        - load_id
+        - rate_per_mile
+        - all_in_rate
+        - kpi
+      additionalProperties: false
+      title: LoadOfferCreate
+      type: object
+    LoadOfferUpdate:
+      properties:
+        status:
+          $ref: '#/components/schemas/ELoadOfferStatus'
+          title: LoadOffer.status
+      required:
+        - status
+      additionalProperties: false
+      title: LoadOfferUpdate
+      type: object
+    ELoadOfferStatus:
+      enum:
+        - Pending
+        - Assigned
+        - Declined
+      title: ELoadOfferStatus
+      type: string

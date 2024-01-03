@@ -1,0 +1,605 @@
+openapi: 3.0.0
+info:
+  title: Converted from driver.schema.yaml with typeconv
+  version: '1'
+  x-id: driver.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/driver.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Driver:
+      properties:
+        id:
+          title: Driver.id
+          type: number
+        avatar:
+          title: Driver.avatar
+          type: number
+        first_name:
+          title: Driver.first_name
+          type: string
+        last_name:
+          title: Driver.last_name
+          type: string
+        ssn:
+          title: Driver.ssn
+          type: string
+        dob:
+          $ref: '#/components/schemas/Date'
+          title: Driver.dob
+        email:
+          $ref: '#/components/schemas/Email'
+          title: Driver.email
+        contact_phone_number:
+          title: Driver.contact_phone_number
+          type: string
+        emergency_phone_number:
+          title: Driver.emergency_phone_number
+          type: string
+        emergency_phone_number_name:
+          title: Driver.emergency_phone_number_name
+          type: string
+        type:
+          $ref: '#/components/schemas/EApplicantType'
+          title: Driver.type
+        w9_exist:
+          title: Driver.w9_exist
+          type: boolean
+        is_restricted:
+          title: Driver.is_restricted
+          type: boolean
+        restricted_notes:
+          title: Driver.restricted_notes
+          type: string
+        address_line_1:
+          title: Driver.address_line_1
+          type: string
+        address_line_2:
+          title: Driver.address_line_2
+          type: string
+        city:
+          title: Driver.city
+          type: string
+        state:
+          title: Driver.state
+          type: string
+        zip_code:
+          title: Driver.zip_code
+          type: string
+        employee_id:
+          title: Driver.employee_id
+          type: string
+        employee_type:
+          title: Driver.employee_type
+          type: string
+        notes:
+          title: Driver.notes
+          type: string
+        account_number:
+          title: Driver.account_number
+          type: string
+        routing_number:
+          title: Driver.routing_number
+          type: string
+        payment_type:
+          title: Driver.payment_type
+          type: string
+        payment_rates:
+          title: Driver.payment_rates
+          type: number
+        tax_form:
+          title: Driver.tax_form
+          type: string
+        recurring_deductions:
+          title: Driver.recurring_deductions
+          type: number
+        compensation:
+          title: Driver.compensation
+          type: number
+        caption:
+          title: Driver.caption
+          type: string
+        status:
+          $ref: '#/components/schemas/EDriverStatus'
+          title: Driver.status
+        substatus:
+          $ref: '#/components/schemas/EDriverSubstatus'
+          title: Driver.substatus
+        score:
+          title: Driver.score
+          type: number
+        hire_date:
+          $ref: '#/components/schemas/Date'
+          title: Driver.hire_date
+        next_drug_test_date:
+          $ref: '#/components/schemas/Date'
+          title: Driver.next_drug_test_date
+        samba_id:
+          title: Driver.samba_id
+          type: string
+        samba_license_id:
+          title: Driver.samba_license_id
+          type: string
+        twic_card:
+          title: Driver.twic_card
+          type: boolean
+        twic_card_notes:
+          title: Driver.twic_card_notes
+          type: string
+        cdls:
+          items:
+            $ref: '#/components/schemas/DriverCdl'
+            title: Driver.cdls.[]
+          title: Driver.cdls
+          type: array
+      required:
+        - id
+        - avatar
+        - first_name
+        - last_name
+        - ssn
+        - dob
+        - email
+        - contact_phone_number
+        - emergency_phone_number
+        - emergency_phone_number_name
+        - type
+        - w9_exist
+        - is_restricted
+        - address_line_1
+        - city
+        - state
+        - zip_code
+        - employee_id
+        - employee_type
+        - payment_type
+        - payment_rates
+        - tax_form
+        - recurring_deductions
+        - compensation
+        - status
+        - substatus
+        - score
+        - hire_date
+        - twic_card
+        - cdls
+      additionalProperties: false
+      title: Driver
+      type: object
+    DriverCdl:
+      properties:
+        id:
+          title: DriverCdl.id
+          type: number
+        type:
+          $ref: '#/components/schemas/ECdlType'
+          title: DriverCdl.type
+        issued_state:
+          title: DriverCdl.issued_state
+          type: string
+        number:
+          title: DriverCdl.number
+          type: string
+        class:
+          $ref: '#/components/schemas/ECdlClass'
+          title: DriverCdl.class
+        expiration_date:
+          $ref: '#/components/schemas/Date'
+          title: DriverCdl.expiration_date
+        endorsement:
+          title: DriverCdl.endorsement
+          type: string
+        file:
+          title: DriverCdl.file
+          type: string
+        completed_by:
+          properties:
+            name:
+              title: DriverCdl.completed_by.name
+              type: string
+            is_owner:
+              title: DriverCdl.completed_by.is_owner
+              type: boolean
+          required:
+            - name
+            - is_owner
+          additionalProperties: false
+          title: DriverCdl.completed_by
+          type: object
+        driver_id:
+          title: DriverCdl.driver_id
+          type: number
+      required:
+        - id
+        - type
+        - issued_state
+        - number
+        - class
+        - expiration_date
+        - endorsement
+        - file
+        - completed_by
+        - driver_id
+      additionalProperties: false
+      title: DriverCdl
+      type: object
+    DriverCdlCreate:
+      properties:
+        type:
+          $ref: '#/components/schemas/ECdlType'
+          title: DriverCdl.type
+        issued_state:
+          title: DriverCdl.issued_state
+          type: string
+        number:
+          title: DriverCdl.number
+          type: string
+        class:
+          $ref: '#/components/schemas/ECdlClass'
+          title: DriverCdl.class
+        expiration_date:
+          $ref: '#/components/schemas/Date'
+          title: DriverCdl.expiration_date
+        endorsement:
+          title: DriverCdl.endorsement
+          type: string
+        file:
+          title: DriverCdl.file
+          type: string
+      required:
+        - type
+        - issued_state
+        - number
+        - class
+        - expiration_date
+        - endorsement
+        - file
+      additionalProperties: false
+      title: DriverCdlCreate
+      type: object
+    DriverCdlUpdate:
+      properties:
+        type:
+          $ref: '#/components/schemas/ECdlType'
+          title: DriverCdl.type
+        issued_state:
+          title: DriverCdl.issued_state
+          type: string
+        number:
+          title: DriverCdl.number
+          type: string
+        class:
+          $ref: '#/components/schemas/ECdlClass'
+          title: DriverCdl.class
+        expiration_date:
+          $ref: '#/components/schemas/Date'
+          title: DriverCdl.expiration_date
+        endorsement:
+          title: DriverCdl.endorsement
+          type: string
+        file:
+          title: DriverCdl.file
+          type: string
+        completed_by:
+          properties:
+            name:
+              title: DriverCdl.completed_by.name
+              type: string
+            is_owner:
+              title: DriverCdl.completed_by.is_owner
+              type: boolean
+          required:
+            - name
+            - is_owner
+          additionalProperties: false
+          title: DriverCdl.completed_by
+          type: object
+      additionalProperties: false
+      title: DriverCdlUpdate
+      type: object
+    DriverCreate:
+      properties:
+        avatar:
+          title: Driver.avatar
+          type: number
+        first_name:
+          title: Driver.first_name
+          type: string
+        last_name:
+          title: Driver.last_name
+          type: string
+        ssn:
+          title: Driver.ssn
+          type: string
+        dob:
+          $ref: '#/components/schemas/Date'
+          title: Driver.dob
+        email:
+          $ref: '#/components/schemas/Email'
+          title: Driver.email
+        contact_phone_number:
+          title: Driver.contact_phone_number
+          type: string
+        emergency_phone_number:
+          title: Driver.emergency_phone_number
+          type: string
+        emergency_phone_number_name:
+          title: Driver.emergency_phone_number_name
+          type: string
+        type:
+          $ref: '#/components/schemas/EApplicantType'
+          title: Driver.type
+        w9_exist:
+          title: Driver.w9_exist
+          type: boolean
+        is_restricted:
+          title: Driver.is_restricted
+          type: boolean
+        restricted_notes:
+          title: Driver.restricted_notes
+          type: string
+        address_line_1:
+          title: Driver.address_line_1
+          type: string
+        address_line_2:
+          title: Driver.address_line_2
+          type: string
+        city:
+          title: Driver.city
+          type: string
+        state:
+          title: Driver.state
+          type: string
+        zip_code:
+          title: Driver.zip_code
+          type: string
+        employee_id:
+          title: Driver.employee_id
+          type: string
+        employee_type:
+          title: Driver.employee_type
+          type: string
+        notes:
+          title: Driver.notes
+          type: string
+        account_number:
+          title: Driver.account_number
+          type: string
+        routing_number:
+          title: Driver.routing_number
+          type: string
+        payment_type:
+          title: Driver.payment_type
+          type: string
+        payment_rates:
+          title: Driver.payment_rates
+          type: number
+        tax_form:
+          title: Driver.tax_form
+          type: string
+        recurring_deductions:
+          title: Driver.recurring_deductions
+          type: number
+        compensation:
+          title: Driver.compensation
+          type: number
+        caption:
+          title: Driver.caption
+          type: string
+        hire_date:
+          $ref: '#/components/schemas/Date'
+          title: Driver.hire_date
+        twic_card:
+          title: Driver.twic_card
+          type: boolean
+        twic_card_notes:
+          title: Driver.twic_card_notes
+          type: string
+        cdls:
+          items:
+            $ref: '#/components/schemas/DriverCdlCreate'
+            title: cdls.[]
+          title: cdls
+          type: array
+      required:
+        - avatar
+        - first_name
+        - last_name
+        - ssn
+        - dob
+        - email
+        - contact_phone_number
+        - emergency_phone_number
+        - emergency_phone_number_name
+        - type
+        - w9_exist
+        - is_restricted
+        - address_line_1
+        - city
+        - state
+        - zip_code
+        - employee_id
+        - employee_type
+        - payment_type
+        - payment_rates
+        - tax_form
+        - recurring_deductions
+        - compensation
+        - hire_date
+        - twic_card
+        - cdls
+      additionalProperties: false
+      title: DriverCreate
+      type: object
+    DriverUpdate:
+      properties:
+        avatar:
+          title: Driver.avatar
+          type: number
+        first_name:
+          title: Driver.first_name
+          type: string
+        last_name:
+          title: Driver.last_name
+          type: string
+        ssn:
+          title: Driver.ssn
+          type: string
+        dob:
+          $ref: '#/components/schemas/Date'
+          title: Driver.dob
+        email:
+          $ref: '#/components/schemas/Email'
+          title: Driver.email
+        contact_phone_number:
+          title: Driver.contact_phone_number
+          type: string
+        emergency_phone_number:
+          title: Driver.emergency_phone_number
+          type: string
+        emergency_phone_number_name:
+          title: Driver.emergency_phone_number_name
+          type: string
+        type:
+          $ref: '#/components/schemas/EApplicantType'
+          title: Driver.type
+        w9_exist:
+          title: Driver.w9_exist
+          type: boolean
+        is_restricted:
+          title: Driver.is_restricted
+          type: boolean
+        restricted_notes:
+          title: Driver.restricted_notes
+          type: string
+        address_line_1:
+          title: Driver.address_line_1
+          type: string
+        address_line_2:
+          title: Driver.address_line_2
+          type: string
+        city:
+          title: Driver.city
+          type: string
+        state:
+          title: Driver.state
+          type: string
+        zip_code:
+          title: Driver.zip_code
+          type: string
+        employee_id:
+          title: Driver.employee_id
+          type: string
+        employee_type:
+          title: Driver.employee_type
+          type: string
+        notes:
+          title: Driver.notes
+          type: string
+        account_number:
+          title: Driver.account_number
+          type: string
+        routing_number:
+          title: Driver.routing_number
+          type: string
+        payment_type:
+          title: Driver.payment_type
+          type: string
+        payment_rates:
+          title: Driver.payment_rates
+          type: number
+        tax_form:
+          title: Driver.tax_form
+          type: string
+        recurring_deductions:
+          title: Driver.recurring_deductions
+          type: number
+        compensation:
+          title: Driver.compensation
+          type: number
+        caption:
+          title: Driver.caption
+          type: string
+        status:
+          $ref: '#/components/schemas/EDriverStatus'
+          title: Driver.status
+        substatus:
+          $ref: '#/components/schemas/EDriverSubstatus'
+          title: Driver.substatus
+        score:
+          title: Driver.score
+          type: number
+        hire_date:
+          $ref: '#/components/schemas/Date'
+          title: Driver.hire_date
+        next_drug_test_date:
+          $ref: '#/components/schemas/Date'
+          title: Driver.next_drug_test_date
+        samba_id:
+          title: Driver.samba_id
+          type: string
+        samba_license_id:
+          title: Driver.samba_license_id
+          type: string
+        twic_card:
+          title: Driver.twic_card
+          type: boolean
+        twic_card_notes:
+          title: Driver.twic_card_notes
+          type: string
+      additionalProperties: false
+      title: DriverUpdate
+      type: object
+    Date:
+      title: Date
+      enum:
+        - '2023-08-18'
+      type: string
+    Email:
+      title: Email
+      enum:
+        - example@gmail.com
+      type: string
+    EApplicantType:
+      enum:
+        - Company Driver
+        - Owner Driver
+        - Lease Driver
+      title: EApplicantType
+      type: string
+    EDriverStatus:
+      enum:
+        - Active
+        - Terminated
+        - On Vacation
+      title: EDriverStatus
+      type: string
+    EDriverSubstatus:
+      enum:
+        - Ready
+        - Covered
+        - Enroute
+        - Shop
+        - Reserved
+        - Dispatched
+        - Home
+        - Home for Load
+        - Stop
+      title: EDriverSubstatus
+      type: string
+    ECdlType:
+      enum:
+        - CDL (Back)
+        - CDL (Front)
+      title: ECdlType
+      type: string
+    ECdlClass:
+      enum:
+        - A Class
+        - B Class
+        - C Class
+      title: ECdlClass
+      type: string

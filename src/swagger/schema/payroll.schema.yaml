@@ -1,0 +1,99 @@
+components:
+  schemas:
+    PayrollSummary:
+      type: object
+      properties:
+        carrier_id:
+          type: number
+          example: 1
+        total_drivers_curr_month:
+          type: number
+          example: 1
+        total_drivers_prev_month:
+          type: number
+          example: 1
+        total_drivers_change_per:
+          type: number
+          example: 1
+        total_drivers_arrow:
+          type: number
+          example: 1
+        companies:
+          type: number
+          example: 1
+        leases:
+          type: number
+          example: 1
+        owner_operators:
+          type: number
+          example: 1
+        total_drivers_paystubs_curr_month:
+          type: number
+          example: 1
+        total_drivers_paystubs_prev_month:
+          type: number
+          example: 1
+        total_drivers_paystubs_change_per:
+          type: number
+          example: 1
+        total_drivers_paystubs_arrow:
+          type: number
+          example: 1
+        processing_paystubs:
+          type: number
+          example: 1
+        in_dispute_paystubs:
+          type: number
+          example: 1
+        submitted_paystubs:
+          type: number
+          example: 1
+        paid_paystubs:
+          type: number
+          example: 1
+        total_trucking_cost_curr_month:
+          type: number
+          example: 1
+        total_trucking_cost_prev_month:
+          type: number
+          example: 1
+        total_trucking_cost_change_per:
+          type: number
+          example: 1
+        total_trucking_cost_arrow:
+          type: number
+          example: 1
+        total_cost:
+          type: number
+          example: 1
+        company_driver_cost:
+          type: number
+          example: 1
+        dispatch_cost:
+          type: number
+          example: 1
+        total_revenue_curr_month:
+          type: number
+          example: 1
+        total_revenue_prev_month:
+          type: number
+          example: 1
+        total_revenue_change_per:
+          type: number
+          example: 1
+        total_revenue_arrow:
+          type: number
+          example: 1
+        revenue_company_driver_cost:
+          type: number
+          example: 1
+        revenue_trucking_cost:
+          type: number
+          example: 1
+        revenue_dispatch_cost:
+          type: number
+          example: 1
+        updated_date:
+          type: string
+          format: date-time
+          example: "2023-08-26T12:34:56Z"

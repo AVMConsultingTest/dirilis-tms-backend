@@ -1,0 +1,217 @@
+paths:
+ /carrier/trailers:
+    get:  
+      tags: [Trailers]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple trailers
+      description: Fetches a paginated list of trailers based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of trailers per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ITrailer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      tags: [Trailers]
+      security:
+        - bearerAuth: []
+      summary: Schedule a new trailer
+      description: Validates the new trailer's data, then schedules it in the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ITrailerCreate'
+      responses:
+        201:
+          description: Trailer is scheduled.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new trailer.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/trailers/upload-excel/:
+    post:
+      summary: Create a new trailers from xls file
+      tags: [Trailers]
+      description: Use this endpoint to create a new trailers.
+      operationId: createTrailers
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        201:
+          description: Trailers created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Trailers created successfully"
+ /carrier/trailers/all:
+    get:
+      tags: [Trailers]
+      security:
+        - bearerAuth: []
+      summary: Retrieve all trailers
+      description: Fetches a list of all trailers.
+      responses:
+        200:
+          description: Successfully retrieved the trailers.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TrailerBasic'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/trailers/{trailer_id}:
+    get:
+      tags: [Trailers]
+      security:
+        - bearerAuth: []
+      summary: Retrieve a single trailer
+      description: Fetches a single trailer by ID.
+      parameters:
+        - name: trailer_id
+          in: path
+          description: ID of the trailer to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Successfully retrieved the trailer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ITrailer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags: [Trailers]
+      security:
+        - bearerAuth: []
+      summary: Update a trailer record
+      description: Updates details of a single trailer by ID.
+      parameters:
+        - name: trailer_id
+          in: path
+          description: ID of the trailer to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ITrailerUpdate'
+      responses:
+        200:
+          description: Successfully updated the trailer.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Trailer with ID successfully updated
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [Trailers]
+      security:
+        - bearerAuth: []
+      summary: Cancel a trailer session
+      description: Deletes a single trailer session by ID.
+      parameters:
+        - name: trailer_id
+          in: path
+          description: ID of the trailer to cancel.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully canceled the trailer.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

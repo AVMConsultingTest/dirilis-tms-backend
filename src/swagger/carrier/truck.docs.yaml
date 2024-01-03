@@ -1,0 +1,229 @@
+paths:
+ /carrier/trucks:
+    post:
+      summary: Create a new truck
+      tags: [Trucks]
+      description: Use this endpoint to create a new truck.
+      operationId: createTruck
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ITruckCreate'
+      responses:
+        201:
+          description: Truck created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 0
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    get:
+      summary: Retrieve trucks
+      tags: [Trucks]
+      description: This endpoint retrieves all trucks.
+      operationId: getTrucks
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of alerts per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ITruck'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/trucks/upload-excel/:
+    post:
+      summary: Create a new trucks from xls file
+      tags: [Trucks]
+      description: Use this endpoint to create a new trucks.
+      operationId: createTrucks
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        201:
+          description: Trucks created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Trucks created successfully"
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/trucks/all:
+    get:
+      tags: [Trucks]
+      security:
+        - bearerAuth: []
+      summary: Retrieve all trucks
+      description: Fetches a list of all trucks.
+      responses:
+        200:
+          description: Successfully retrieved the trucks.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TruckBasic'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/trucks/{truck_id}:
+    get:
+      summary: Get a truck by ID
+      tags: [Trucks]
+      description: Use this endpoint to get details about a specific truck by its ID.
+      operationId: getTruckById
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: truck_id
+          in: path
+          description: ID of the truck to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ITruck'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      summary: update a truck by ID
+      tags: [Trucks]
+      description: This endpoint update a truck details. truck id must be required.
+      operationId: updateTruck
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: truck_id
+          in: path
+          description: ID of the truck to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        description: The truck's information
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ITruckUpdate'
+      responses:
+        200:
+          description: Truck updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Truck with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      summary: Delete truck by truck id
+      tags: [Trucks]
+      description: This endpoint delete truck. The user making the request must need to pass truck id.
+      operationId: deleteTruck
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: truck_id
+          in: path
+          description: ID of the truck to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Truck removed successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

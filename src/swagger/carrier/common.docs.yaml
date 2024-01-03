@@ -1,0 +1,8 @@
+components:
+  responses:
+    BadRequest:
+      description: Bad request.
+    NotFound:
+      description: Record not found.
+    InternalServerError:
+      description: Internal server error.

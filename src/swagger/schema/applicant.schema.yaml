@@ -1,0 +1,65 @@
+components:
+  schemas:
+    Applicant:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - type
+        - hire_date
+        - phone_number
+        - email
+        - status
+      properties:
+        first_name:
+          type: string
+          example: "John"
+        last_name:
+          type: string
+          example: "Doe"
+        type:
+          type: string
+          enum:
+            - "Company Driver"
+          example: "Company Driver"
+        hire_date:
+          type: string
+          format: date
+          example: "2023-08-18"
+        phone_number:
+          type: string
+          example: "+12025551234"
+        email:
+          type: string
+          format: email
+          example: "john.doe@example.com"
+        status:
+          type: string
+          enum:
+            - "Completed"
+            - "Not Completed"
+            - "New Applicant"
+          example: "New Applicant"
+
+    ApplicantCreate:
+      $ref: '#/components/schemas/Applicant'
+      
+    ApplicantUpdate:
+      allOf:
+        - $ref: '#/components/schemas/Applicant'
+    
+    ApplicantSummary:
+      type: object
+      properties:
+        pending_documents:
+          type: integer
+          description: Count of pending documents
+          example: 28
+        pending_approvals:
+          type: integer
+          description: Count of pending approvals
+          example: 26
+        pending_training:
+          type: integer
+          description: Count of pending training
+          example: 30

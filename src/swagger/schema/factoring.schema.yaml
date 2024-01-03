@@ -1,0 +1,125 @@
+openapi: 3.0.0
+info:
+  title: Converted from factoring.schema.yaml with typeconv
+  version: '1'
+  x-id: factoring.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/factoring.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Factoring:
+      properties:
+        id:
+          title: Factoring.id
+          type: number
+        shipper_name:
+          title: Factoring.shipper_name
+          type: string
+        invoice_date:
+          $ref: '#/components/schemas/Date'
+          title: Factoring.invoice_date
+        invoice_number:
+          title: Factoring.invoice_number
+          type: string
+        reference_number:
+          title: Factoring.reference_number
+          type: string
+        invoice_amount:
+          title: Factoring.invoice_amount
+          type: number
+        notes:
+          title: Factoring.notes
+          type: string
+        status:
+          $ref: '#/components/schemas/EFactoringStatus'
+          title: Factoring.status
+      required:
+        - id
+        - shipper_name
+        - invoice_date
+        - invoice_number
+        - reference_number
+        - invoice_amount
+        - status
+      additionalProperties: false
+      title: Factoring
+      type: object
+    FactoringCreate:
+      properties:
+        shipper_name:
+          title: Factoring.shipper_name
+          type: string
+        invoice_date:
+          $ref: '#/components/schemas/Date'
+          title: Factoring.invoice_date
+        invoice_number:
+          title: Factoring.invoice_number
+          type: string
+        reference_number:
+          title: Factoring.reference_number
+          type: string
+        invoice_amount:
+          title: Factoring.invoice_amount
+          type: number
+        notes:
+          title: Factoring.notes
+          type: string
+      required:
+        - shipper_name
+        - invoice_date
+        - invoice_number
+        - reference_number
+        - invoice_amount
+      additionalProperties: false
+      title: FactoringCreate
+      type: object
+    FactoringUpdate:
+      properties:
+        shipper_name:
+          title: Factoring.shipper_name
+          type: string
+        invoice_date:
+          $ref: '#/components/schemas/Date'
+          title: Factoring.invoice_date
+        invoice_number:
+          title: Factoring.invoice_number
+          type: string
+        reference_number:
+          title: Factoring.reference_number
+          type: string
+        invoice_amount:
+          title: Factoring.invoice_amount
+          type: number
+        notes:
+          title: Factoring.notes
+          type: string
+        status:
+          $ref: '#/components/schemas/EFactoringStatus'
+          title: Factoring.status
+      required:
+        - shipper_name
+        - invoice_date
+        - invoice_number
+        - reference_number
+        - invoice_amount
+        - status
+      additionalProperties: false
+      title: FactoringUpdate
+      type: object
+    Date:
+      title: Date
+      enum:
+        - '2023-08-18'
+      type: string
+    EFactoringStatus:
+      enum:
+        - Pending
+        - Open
+        - Submitted
+        - Received
+        - Rejected
+      title: EFactoringStatus
+      type: string

@@ -1,0 +1,461 @@
+openapi: 3.0.0
+info:
+  title: Converted from eld.schema.yaml with typeconv
+  version: '1'
+  x-id: eld.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/eld.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    EEldAlertEventType:
+      enum:
+        - Clear
+        - Obstructed Camera
+        - Mobile Usage
+      title: EEldAlertEventType
+      type: string
+    EEldAlertStatus:
+      enum:
+        - Needs Review
+        - Dismissed
+        - Starred
+      title: EEldAlertStatus
+      type: string
+    EEldDriverEntityDrivingStatus:
+      enum:
+        - Clear
+        - Driving
+        - Sleep Beth
+      title: EEldDriverEntityDrivingStatus
+      type: string
+    EFuelType:
+      enum:
+        - Clear
+        - Diesel
+      title: EFuelType
+      type: string
+    EEldTrailerEntityStatus:
+      enum:
+        - Clear
+        - No Gateway Peried
+      title: EEldTrailerEntityStatus
+      type: string
+    EEldTruckEntityStatus:
+      enum:
+        - Clear
+        - 'Off'
+        - Moving
+      title: EEldTruckEntityStatus
+      type: string
+    Date:
+      title: Date
+      enum:
+        - '2023-08-18'
+      type: string
+    EldAlert:
+      properties:
+        id:
+          title: EldAlert.id
+          type: number
+        event_type:
+          $ref: '#/components/schemas/EEldAlertEventType'
+          title: EldAlert.event_type
+        status:
+          $ref: '#/components/schemas/EEldAlertStatus'
+          title: EldAlert.status
+        video_time:
+          title: EldAlert.video_time
+          type: string
+        video_url:
+          title: EldAlert.video_url
+          type: string
+        driver_id:
+          title: EldAlert.driver_id
+          type: number
+      required:
+        - id
+        - event_type
+        - status
+        - video_time
+        - video_url
+        - driver_id
+      additionalProperties: false
+      title: EldAlert
+      type: object
+    EldDriverEntity:
+      properties:
+        id:
+          title: EldDriverEntity.id
+          type: number
+        driving_status:
+          $ref: '#/components/schemas/EEldDriverEntityDrivingStatus'
+          title: EldDriverEntity.driving_status
+        app_version:
+          title: EldDriverEntity.app_version
+          type: string
+        os:
+          title: EldDriverEntity.os
+          type: string
+        current_location_lat:
+          title: EldDriverEntity.current_location_lat
+          type: string
+        current_location_long:
+          title: EldDriverEntity.current_location_long
+          type: string
+        current_location:
+          title: EldDriverEntity.current_location
+          type: string
+        driver_id:
+          title: EldDriverEntity.driver_id
+          type: number
+        vehicle_id:
+          title: EldDriverEntity.vehicle_id
+          type: number
+      required:
+        - id
+        - driving_status
+        - app_version
+        - os
+        - current_location_lat
+        - current_location_long
+        - current_location
+        - driver_id
+        - vehicle_id
+      additionalProperties: false
+      title: EldDriverEntity
+      type: object
+    EldIftaDriver:
+      properties:
+        id:
+          title: EldIftaDriver.id
+          type: number
+        avg_mpg:
+          title: EldIftaDriver.avg_mpg
+          type: string
+        moving_mpg:
+          title: EldIftaDriver.moving_mpg
+          type: string
+        total_distance:
+          title: EldIftaDriver.total_distance
+          type: string
+        utilization:
+          title: EldIftaDriver.utilization
+          type: string
+        driving:
+          title: EldIftaDriver.driving
+          type: string
+        idling:
+          title: EldIftaDriver.idling
+          type: string
+        fuel_cost:
+          title: EldIftaDriver.fuel_cost
+          type: string
+        est_empty_miles:
+          title: EldIftaDriver.est_empty_miles
+          type: string
+        driver_id:
+          title: EldIftaDriver.driver_id
+          type: number
+      required:
+        - id
+        - avg_mpg
+        - moving_mpg
+        - total_distance
+        - utilization
+        - driving
+        - idling
+        - fuel_cost
+        - est_empty_miles
+        - driver_id
+      additionalProperties: false
+      title: EldIftaDriver
+      type: object
+    EldIftaFuelPurchase:
+      properties:
+        id:
+          title: EldIftaFuelPurchase.id
+          type: number
+        date:
+          $ref: '#/components/schemas/Date'
+          title: EldIftaFuelPurchase.date
+        jurisdiction:
+          title: EldIftaFuelPurchase.jurisdiction
+          type: string
+        fuel_type:
+          $ref: '#/components/schemas/EFuelType'
+          title: EldIftaFuelPurchase.fuel_type
+        volume:
+          title: EldIftaFuelPurchase.volume
+          type: string
+        cost:
+          title: EldIftaFuelPurchase.cost
+          type: string
+        vendor:
+          title: EldIftaFuelPurchase.vendor
+          type: string
+        source:
+          title: EldIftaFuelPurchase.source
+          type: string
+        vehicle_id:
+          title: EldIftaFuelPurchase.vehicle_id
+          type: number
+      required:
+        - id
+        - date
+        - jurisdiction
+        - fuel_type
+        - volume
+        - cost
+        - vendor
+        - source
+        - vehicle_id
+      additionalProperties: false
+      title: EldIftaFuelPurchase
+      type: object
+    EldIftaIdlingEvent:
+      properties:
+        id:
+          title: EldIftaIdlingEvent.id
+          type: number
+        start_date:
+          $ref: '#/components/schemas/Date'
+          title: EldIftaIdlingEvent.start_date
+        total:
+          title: EldIftaIdlingEvent.total
+          type: string
+        current_location_lat:
+          title: EldIftaIdlingEvent.current_location_lat
+          type: string
+        current_location_long:
+          title: EldIftaIdlingEvent.current_location_long
+          type: string
+        current_location:
+          title: EldIftaIdlingEvent.current_location
+          type: string
+        vehicle_id:
+          title: EldIftaIdlingEvent.vehicle_id
+          type: number
+        driver_id:
+          title: EldIftaIdlingEvent.driver_id
+          type: number
+      required:
+        - id
+        - start_date
+        - total
+        - current_location_lat
+        - current_location_long
+        - current_location
+        - vehicle_id
+        - driver_id
+      additionalProperties: false
+      title: EldIftaIdlingEvent
+      type: object
+    EldIftaSummary:
+      properties:
+        id:
+          title: EldIftaSummary.id
+          type: number
+        jurisdiction:
+          title: EldIftaSummary.jurisdiction
+          type: string
+        distance:
+          title: EldIftaSummary.distance
+          type: string
+        fuel:
+          title: EldIftaSummary.fuel
+          type: string
+        vehicle_id:
+          title: EldIftaSummary.vehicle_id
+          type: number
+        driver_id:
+          title: EldIftaSummary.driver_id
+          type: number
+      required:
+        - id
+        - jurisdiction
+        - distance
+        - fuel
+        - vehicle_id
+        - driver_id
+      additionalProperties: false
+      title: EldIftaSummary
+      type: object
+    EldIftaTripReport:
+      properties:
+        id:
+          title: EldIftaTripReport.id
+          type: number
+        date:
+          $ref: '#/components/schemas/Date'
+          title: EldIftaTripReport.date
+        jurisdiction:
+          title: EldIftaTripReport.jurisdiction
+          type: string
+        distance:
+          title: EldIftaTripReport.distance
+          type: string
+        odo_start:
+          title: EldIftaTripReport.odo_start
+          type: string
+        odo_end:
+          title: EldIftaTripReport.odo_end
+          type: string
+        vehicle_id:
+          title: EldIftaTripReport.vehicle_id
+          type: number
+      required:
+        - id
+        - date
+        - jurisdiction
+        - distance
+        - odo_start
+        - odo_end
+        - vehicle_id
+      additionalProperties: false
+      title: EldIftaTripReport
+      type: object
+    EldIftaVehicle:
+      properties:
+        id:
+          title: EldIftaVehicle.id
+          type: number
+        avg_mpg:
+          title: EldIftaVehicle.avg_mpg
+          type: string
+        moving_mpg:
+          title: EldIftaVehicle.moving_mpg
+          type: string
+        total_distance:
+          title: EldIftaVehicle.total_distance
+          type: string
+        utilization:
+          title: EldIftaVehicle.utilization
+          type: string
+        driving:
+          title: EldIftaVehicle.driving
+          type: string
+        idling:
+          title: EldIftaVehicle.idling
+          type: string
+        fuel_cost:
+          title: EldIftaVehicle.fuel_cost
+          type: string
+        odometer:
+          title: EldIftaVehicle.odometer
+          type: string
+        fuel_type:
+          $ref: '#/components/schemas/EFuelType'
+          title: EldIftaVehicle.fuel_type
+        vehicle_id:
+          title: EldIftaVehicle.vehicle_id
+          type: number
+      required:
+        - id
+        - avg_mpg
+        - moving_mpg
+        - total_distance
+        - utilization
+        - driving
+        - idling
+        - fuel_cost
+        - odometer
+        - fuel_type
+        - vehicle_id
+      additionalProperties: false
+      title: EldIftaVehicle
+      type: object
+    EldTrailerEntity:
+      properties:
+        id:
+          title: EldTrailerEntity.id
+          type: number
+        status:
+          $ref: '#/components/schemas/EEldTrailerEntityStatus'
+          title: EldTrailerEntity.status
+        last_trip:
+          title: EldTrailerEntity.last_trip
+          type: string
+        battary:
+          title: EldTrailerEntity.battary
+          type: string
+        tags:
+          title: EldTrailerEntity.tags
+          type: string
+        current_location_lat:
+          title: EldTrailerEntity.current_location_lat
+          type: string
+        current_location_long:
+          title: EldTrailerEntity.current_location_long
+          type: string
+        current_location:
+          title: EldTrailerEntity.current_location
+          type: string
+        trailer_id:
+          title: EldTrailerEntity.trailer_id
+          type: number
+      required:
+        - id
+        - status
+        - last_trip
+        - battary
+        - tags
+        - current_location_lat
+        - current_location_long
+        - current_location
+        - trailer_id
+      additionalProperties: false
+      title: EldTrailerEntity
+      type: object
+    EldTruckEntity:
+      properties:
+        id:
+          title: EldTruckEntity.id
+          type: number
+        status:
+          $ref: '#/components/schemas/EEldTruckEntityStatus'
+          title: EldTruckEntity.status
+        last_trip:
+          title: EldTruckEntity.last_trip
+          type: string
+        current_fuel_level:
+          title: EldTruckEntity.current_fuel_level
+          type: string
+        license_plate:
+          title: EldTruckEntity.license_plate
+          type: string
+        tags:
+          title: EldTruckEntity.tags
+          type: string
+        current_location_lat:
+          title: EldTruckEntity.current_location_lat
+          type: string
+        current_location_long:
+          title: EldTruckEntity.current_location_long
+          type: string
+        current_location:
+          title: EldTruckEntity.current_location
+          type: string
+        driver_id:
+          title: EldTruckEntity.driver_id
+          type: number
+        truck_id:
+          title: EldTruckEntity.truck_id
+          type: number
+      required:
+        - id
+        - status
+        - last_trip
+        - current_fuel_level
+        - license_plate
+        - tags
+        - current_location_lat
+        - current_location_long
+        - current_location
+        - driver_id
+        - truck_id
+      additionalProperties: false
+      title: EldTruckEntity
+      type: object

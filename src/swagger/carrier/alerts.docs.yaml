@@ -1,0 +1,180 @@
+paths:
+ /carrier/alerts:
+    get:  
+      tags: [Alerts]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple alerts
+      description: Fetches a paginated list of alerts based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of alerts per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Successfully retrieved the accidents.
+          content: 
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  page_size: 
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 10
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Alert'
+    post:
+      tags: [Alerts]
+      security:
+        - bearerAuth: []
+      summary: Create a new alert
+      description: Validates the new alert's data, then creates an entry in the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertCreate'
+      responses:
+        201:
+          description: Alert is created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new alert.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/alerts/{alert_id}:
+    get:
+      tags: [Alerts]
+      security:
+        - bearerAuth: []
+      summary: Retrieve a single alert
+      description: Fetches a single alert by ID.
+      parameters:
+        - name: alert_id
+          in: path
+          description: ID of the alert to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Successfully retrieved the alert.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Alert'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags: [Alerts]
+      security:
+        - bearerAuth: []
+      summary: Update a single alert
+      description: Updates a single alert by ID.
+      parameters:
+        - name: alert_id
+          in: path
+          description: ID of the alert to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertUpdate'
+      responses:
+        200:
+          description: Successfully updated the alert.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Alert with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [Alerts]
+      security:
+        - bearerAuth: []
+      summary: Delete a single alert
+      description: Deletes a single alert by ID.
+      parameters:
+        - name: alert_id
+          in: path
+          description: ID of the alert to delete.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully removed the alert.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+ /carrier/alerts/summary:
+    get:
+      summary: Get alerts summary for a company
+      tags: [Alerts]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response with alerts summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertSummary'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'

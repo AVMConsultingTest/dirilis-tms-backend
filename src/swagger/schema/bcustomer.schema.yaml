@@ -1,0 +1,309 @@
+openapi: 3.0.0
+info:
+  title: Converted from bcustomer.schema.yaml with typeconv
+  version: '1'
+  x-id: bcustomer.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/bcustomer.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    BCustomer:
+      properties:
+        id:
+          title: BCustomer.id
+          type: number
+        name:
+          title: BCustomer.name
+          type: string
+        dba_name:
+          title: BCustomer.dba_name
+          type: string
+        sales_representative:
+          title: BCustomer.sales_representative
+          type: string
+        account_manager:
+          title: BCustomer.account_manager
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: BCustomer.email
+        phone_number:
+          title: BCustomer.phone_number
+          type: string
+        address_line1:
+          title: BCustomer.address_line1
+          type: string
+        address_line2:
+          title: BCustomer.address_line2
+          type: string
+        state:
+          title: BCustomer.state
+          type: string
+        city:
+          title: BCustomer.city
+          type: string
+        zip_code:
+          title: BCustomer.zip_code
+          type: string
+        country:
+          title: BCustomer.country
+          type: string
+        bill_method:
+          title: BCustomer.bill_method
+          type: string
+        bill_frequency:
+          title: BCustomer.bill_frequency
+          type: string
+        shipment_type:
+          title: BCustomer.shipment_type
+          type: string
+        pod_required:
+          $ref: '#/components/schemas/EBool'
+          title: BCustomer.pod_required
+        credit_limit:
+          title: BCustomer.credit_limit
+          type: string
+        payment_team:
+          title: BCustomer.payment_team
+          type: string
+        bcustomer_contacts:
+          items:
+            $ref: '#/components/schemas/BCustomerContact'
+            title: BCustomer.bcustomer_contacts.[]
+          title: BCustomer.bcustomer_contacts
+          type: array
+      required:
+        - id
+        - name
+        - dba_name
+        - sales_representative
+        - account_manager
+        - email
+        - phone_number
+        - bill_method
+        - bill_frequency
+        - shipment_type
+        - pod_required
+        - credit_limit
+        - payment_team
+        - bcustomer_contacts
+      additionalProperties: false
+      title: BCustomer
+      type: object
+    BCustomerContact:
+      properties:
+        id:
+          title: BCustomerContact.id
+          type: number
+        name:
+          title: BCustomerContact.name
+          type: string
+        email:
+          title: BCustomerContact.email
+          type: string
+        phone_number:
+          title: BCustomerContact.phone_number
+          type: string
+        role:
+          title: BCustomerContact.role
+          type: string
+      required:
+        - id
+        - name
+        - email
+        - phone_number
+        - role
+      additionalProperties: false
+      title: BCustomerContact
+      type: object
+    BCustomerCreate:
+      properties:
+        name:
+          title: BCustomer.name
+          type: string
+        dba_name:
+          title: BCustomer.dba_name
+          type: string
+        sales_representative:
+          title: BCustomer.sales_representative
+          type: string
+        account_manager:
+          title: BCustomer.account_manager
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: BCustomer.email
+        phone_number:
+          title: BCustomer.phone_number
+          type: string
+        address_line1:
+          title: BCustomer.address_line1
+          type: string
+        address_line2:
+          title: BCustomer.address_line2
+          type: string
+        state:
+          title: BCustomer.state
+          type: string
+        city:
+          title: BCustomer.city
+          type: string
+        zip_code:
+          title: BCustomer.zip_code
+          type: string
+        country:
+          title: BCustomer.country
+          type: string
+        bill_method:
+          title: BCustomer.bill_method
+          type: string
+        bill_frequency:
+          title: BCustomer.bill_frequency
+          type: string
+        shipment_type:
+          title: BCustomer.shipment_type
+          type: string
+        pod_required:
+          $ref: '#/components/schemas/EBool'
+          title: BCustomer.pod_required
+        credit_limit:
+          title: BCustomer.credit_limit
+          type: string
+        payment_team:
+          title: BCustomer.payment_team
+          type: string
+        bcustomer_contacts:
+          items:
+            $ref: '#/components/schemas/BCustomerContactCreate'
+            title: bcustomer_contacts.[]
+          title: bcustomer_contacts
+          type: array
+      required:
+        - name
+        - dba_name
+        - sales_representative
+        - account_manager
+        - email
+        - phone_number
+        - bill_method
+        - bill_frequency
+        - shipment_type
+        - pod_required
+        - credit_limit
+        - payment_team
+        - bcustomer_contacts
+      additionalProperties: false
+      title: BCustomerCreate
+      type: object
+    BCustomerContactCreate:
+      properties:
+        name:
+          title: BCustomerContact.name
+          type: string
+        email:
+          title: BCustomerContact.email
+          type: string
+        phone_number:
+          title: BCustomerContact.phone_number
+          type: string
+        role:
+          title: BCustomerContact.role
+          type: string
+      required:
+        - name
+        - email
+        - phone_number
+        - role
+      additionalProperties: false
+      title: BCustomerContactCreate
+      type: object
+    BCustomerUpdate:
+      properties:
+        name:
+          title: BCustomer.name
+          type: string
+        dba_name:
+          title: BCustomer.dba_name
+          type: string
+        sales_representative:
+          title: BCustomer.sales_representative
+          type: string
+        account_manager:
+          title: BCustomer.account_manager
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: BCustomer.email
+        phone_number:
+          title: BCustomer.phone_number
+          type: string
+        address_line1:
+          title: BCustomer.address_line1
+          type: string
+        address_line2:
+          title: BCustomer.address_line2
+          type: string
+        state:
+          title: BCustomer.state
+          type: string
+        city:
+          title: BCustomer.city
+          type: string
+        zip_code:
+          title: BCustomer.zip_code
+          type: string
+        country:
+          title: BCustomer.country
+          type: string
+        bill_method:
+          title: BCustomer.bill_method
+          type: string
+        bill_frequency:
+          title: BCustomer.bill_frequency
+          type: string
+        shipment_type:
+          title: BCustomer.shipment_type
+          type: string
+        pod_required:
+          $ref: '#/components/schemas/EBool'
+          title: BCustomer.pod_required
+        credit_limit:
+          title: BCustomer.credit_limit
+          type: string
+        payment_team:
+          title: BCustomer.payment_team
+          type: string
+      additionalProperties: false
+      title: BCustomerUpdate
+      type: object
+    BCustomerContactUpdate:
+      properties:
+        name:
+          title: BCustomerContact.name
+          type: string
+        email:
+          title: BCustomerContact.email
+          type: string
+        phone_number:
+          title: BCustomerContact.phone_number
+          type: string
+        role:
+          title: BCustomerContact.role
+          type: string
+      additionalProperties: false
+      title: BCustomerContactUpdate
+      type: object
+    Email:
+      title: Email
+      enum:
+        - example@gmail.com
+      type: string
+    EBool:
+      enum:
+        - 'Yes'
+        - 'No'
+      title: EBool
+      type: string

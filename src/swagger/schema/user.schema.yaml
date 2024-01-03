@@ -1,0 +1,261 @@
+openapi: 3.0.0
+info:
+  title: Converted from user.schema.yaml with typeconv
+  version: '1'
+  x-id: user.schema.yaml
+  x-comment: >-
+    Generated from src/interfaces/user.schema.ts by core-types-json-schema
+    (https://github.com/grantila/core-types-json-schema) on behalf of typeconv
+    (https://github.com/grantila/typeconv)
+paths: {}
+components:
+  schemas:
+    Permission:
+      properties:
+        id:
+          title: Permission.id
+          type: number
+        route:
+          $ref: '#/components/schemas/EPermissionRoute'
+          title: Permission.route
+        can_write:
+          title: Permission.can_write
+          type: boolean
+        can_read:
+          title: Permission.can_read
+          type: boolean
+        role_id:
+          title: Permission.role_id
+          type: number
+        company_id:
+          title: Permission.company_id
+          type: number
+        created_at:
+          title: Permission.created_at
+        updated_at:
+          title: Permission.updated_at
+      required:
+        - id
+        - route
+        - can_write
+        - can_read
+        - role_id
+        - company_id
+      additionalProperties: false
+      title: Permission
+      type: object
+    User:
+      properties:
+        id:
+          title: User.id
+          type: number
+        first_name:
+          title: User.first_name
+          type: string
+        last_name:
+          title: User.last_name
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: User.email
+        username:
+          title: User.username
+          type: string
+        role:
+          $ref: '#/components/schemas/EUserRole'
+          title: User.role
+        company_id:
+          title: User.company_id
+          type: number
+        job_title:
+          title: User.job_title
+          type: string
+        address_line1:
+          title: User.address_line1
+          type: string
+        address_line2:
+          title: User.address_line2
+          type: string
+        state:
+          title: User.state
+          type: string
+        city:
+          title: User.city
+          type: string
+        zip_code:
+          title: User.zip_code
+          type: string
+        country:
+          title: User.country
+          type: string
+        phone_number:
+          title: User.phone_number
+          type: string
+        fax_number:
+          title: User.fax_number
+          type: string
+        thirt_party_access:
+          $ref: '#/components/schemas/EBool'
+          title: User.thirt_party_access
+        image:
+          title: User.image
+          nullable: true
+          type: string
+        password:
+          title: User.password
+          type: string
+        is_password_changed:
+          title: User.is_password_changed
+          type: boolean
+        refresh_token:
+          title: User.refresh_token
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/Permission'
+            title: User.permissions.[]
+          title: User.permissions
+          type: array
+      required:
+        - id
+        - first_name
+        - last_name
+        - email
+        - username
+        - role
+        - company_id
+        - permissions
+      additionalProperties: false
+      title: User
+      type: object
+    UserCreate:
+      properties:
+        email:
+          $ref: '#/components/schemas/Email'
+          title: User.email
+        role:
+          $ref: '#/components/schemas/EUserRole'
+          title: User.role
+      required:
+        - email
+        - role
+      additionalProperties: false
+      title: UserCreate
+      type: object
+    UserUpdate:
+      properties:
+        first_name:
+          title: User.first_name
+          type: string
+        last_name:
+          title: User.last_name
+          type: string
+        email:
+          $ref: '#/components/schemas/Email'
+          title: User.email
+        username:
+          title: User.username
+          type: string
+        role:
+          $ref: '#/components/schemas/EUserRole'
+          title: User.role
+        company_id:
+          title: User.company_id
+          type: number
+        job_title:
+          title: User.job_title
+          type: string
+        address_line1:
+          title: User.address_line1
+          type: string
+        address_line2:
+          title: User.address_line2
+          type: string
+        state:
+          title: User.state
+          type: string
+        city:
+          title: User.city
+          type: string
+        zip_code:
+          title: User.zip_code
+          type: string
+        country:
+          title: User.country
+          type: string
+        phone_number:
+          title: User.phone_number
+          type: string
+        fax_number:
+          title: User.fax_number
+          type: string
+        thirt_party_access:
+          $ref: '#/components/schemas/EBool'
+          title: User.thirt_party_access
+        image:
+          title: User.image
+          nullable: true
+          type: string
+        password:
+          title: User.password
+          type: string
+        is_password_changed:
+          title: User.is_password_changed
+          type: boolean
+        refresh_token:
+          title: User.refresh_token
+          type: string
+        permissions:
+          items:
+            $ref: '#/components/schemas/Permission'
+            title: User.permissions.[]
+          title: User.permissions
+          type: array
+      additionalProperties: false
+      title: UserUpdate
+      type: object
+    EPermissionRoute:
+      enum:
+        - accidents
+        - alerts
+        - applicants
+        - brokers
+        - clients
+        - companies
+        - devices
+        - drivers
+        - drug-tests
+        - incidents
+        - inspections
+        - loads
+        - payables
+        - payroll
+        - permits
+        - samba
+        - services
+        - summaries
+        - trailers
+        - trainings
+        - trucks
+        - users
+        - vendors
+      title: EPermissionRoute
+      type: string
+    Email:
+      title: Email
+      enum:
+        - example@gmail.com
+      type: string
+    EUserRole:
+      enum:
+        - carrer
+        - admin
+        - broker
+      title: EUserRole
+      type: string
+    EBool:
+      enum:
+        - 'Yes'
+        - 'No'
+      title: EBool
+      type: string

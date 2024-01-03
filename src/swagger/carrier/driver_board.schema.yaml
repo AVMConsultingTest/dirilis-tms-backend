@@ -1,0 +1,86 @@
+components:
+  schemas:
+    DriverBoard:
+      type: object
+      properties:
+        driver_id:
+          type: number
+          example: 1
+          description: The id of the driver board.
+        notes:
+          type: string
+          example: "Additional notes"
+          description: Additional notes about the driver board.
+        on_time:
+          type: number
+          example: 1
+          description: on time percent of the driver.
+        acceptance:
+          type: number
+          example: 1
+          description: acceptance of the driver.
+    DriverBoardDetails:
+      type: object
+      properties:
+        driver_id:
+          type: number
+          example: 1
+          description: The id of the driver.
+        notes:
+          type: string
+          example: "Additional notes"
+          description: Additional notes about the driver board.
+        on_time:
+          type: number
+          example: 1
+          description: on time percent of the driver.
+        acceptance:
+          type: number
+          example: 1
+          description: acceptance of the driver.
+        type:
+          type: string
+          example: "Company Driver"
+          description: type of the driver board.
+        created_at:
+          type: date
+          example: "2023-08-24T20:12:10.173Z"
+          description: created at date
+        updated_at:
+          type: date
+          example: "2023-08-24T20:12:10.173Z"
+          description: updated at date
+        carrier_id:
+          type: number
+          example: 1
+          description: company id of the driver.
+        name:
+          type: string
+          example: "name last"
+          description: name of the driver.
+        status:
+          type: string
+          example: "Active"
+          description: Status of the driver.
+        contact_phone_number:
+          type: string
+          example: "12121212"
+          description: contact_phone_number of the driver.
+    DriverBoardCreate:
+      type: object
+      properties:
+        driver_id:
+          type: number
+          example: 1
+        notes:
+          type: string
+          example: "Additional notes"
+    DriverBoardUpdate:
+      type: object
+      properties:
+        driver_id:
+          type: number
+          example: 1
+        notes:
+          type: string
+          example: "Additional notes"

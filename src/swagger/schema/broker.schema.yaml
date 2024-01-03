@@ -1,0 +1,126 @@
+components:
+  schemas:
+    Broker:
+      type: object
+      required:
+        - name
+        - mc
+        - credit_limit
+        - credit_available
+        - score
+        - credit_limit_incrase
+        - invoicing_email
+        - status
+        - contract
+        - bill_to_address
+        - direct_billing
+        - billing_email
+        - billing_option
+        - address_line1
+        - state
+        - city
+        - zip_code
+        - country
+        - contact1_first_name
+        - contact1_last_name
+        - contact1_email
+        - contact1_phone_number
+      properties:
+        name:
+          type: string
+          example: "ABC Brokerage"
+        mc:
+          type: string
+          example: "123456"
+        credit_limit:
+          type: number
+          format: double
+          example: 50000.00
+        credit_available:
+          type: string
+          example: "25000.00"
+        score:
+          type: string
+          example: "A+"
+        credit_limit_incrase:
+          type: string
+          example: "Yes"
+        invoicing_email:
+          type: string
+          format: email
+          example: "billing@abc-brokerage.com"
+        status:
+          type: string
+          enum:
+            - "Active"
+            - "Inactive"
+          example: "Active"
+        contract:
+          type: string
+          example: "Brokerage Contract"
+        notes:
+          type: string
+          example: "Additional notes about the broker"
+        bill_to_address:
+          type: string
+          example: "123 Billing St."
+        direct_billing:
+          type: boolean
+          example: true
+        billing_email:
+          type: string
+          format: email
+          example: "billing@abc-brokerage.com"
+        billing_option:
+          type: string
+          example: "Credit Card"
+        address_line1:
+          type: string
+          example: "789 Brokerage Rd."
+        address_line2:
+          type: string
+          example: "Suite 2"
+        state:
+          type: string
+          example: "CA"
+        city:
+          type: string
+          example: "Los Angeles"
+        zip_code:
+          type: string
+          example: "90001"
+        country:
+          type: string
+          example: "USA"
+        contact1_first_name:
+          type: string
+          example: "John"
+        contact1_last_name:
+          type: string
+          example: "Doe"
+        contact1_email:
+          type: string
+          format: email
+          example: "john.doe@abc-brokerage.com"
+        contact1_phone_number:
+          type: string
+          example: "+12025551234"
+        contact2_first_name:
+          type: string
+          example: "Jane"
+        contact2_last_name:
+          type: string
+          example: "Smith"
+        contact2_email:
+          type: string
+          format: email
+          example: "jane.smith@abc-brokerage.com"
+        contact2_phone_number:
+          type: string
+          example: "+12025552345"
+
+    BrokerCreate:
+      $ref: '#/components/schemas/Broker'
+
+    BrokerUpdate:
+      $ref: '#/components/schemas/Broker'

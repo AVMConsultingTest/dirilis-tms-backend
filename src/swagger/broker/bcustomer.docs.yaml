@@ -1,0 +1,280 @@
+paths:
+  /broker/customers:
+    get:  
+      tags: [BCustomers]
+      security:
+        - bearerAuth: []
+      summary: Retrieve multiple bcustomers
+      description: Fetches a paginated list of bcustomers based on query parameters.
+      parameters:
+        - name: page_number
+          in: query
+          description: Page number for pagination.
+          required: false
+          schema:
+            type: integer
+            default: 1
+        - name: page_size
+          in: query
+          description: Number of bcustomers per page.
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        200:
+          description: Operation successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  page_size:
+                    type: integer
+                    example: 10
+                  page_number:
+                    type: integer
+                    example: 1
+                  total_pages:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BCustomer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    post:
+      tags: [BCustomers]
+      security:
+        - bearerAuth: []
+      summary: Register a new bcustomer
+      description: Validates the new bcustomer's data, then adds it to the database.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BCustomerCreate'
+      responses:
+        201:
+          description: BCustomer is registered.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new bcustomer.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /broker/customers/{bcustomer_id}:
+    get:
+      tags: [BCustomers]
+      security:
+        - bearerAuth: []
+      summary: Retrieve a single bcustomer
+      description: Fetches a single bcustomer by ID.
+      parameters:
+        - name: bcustomer_id
+          in: path
+          description: ID of the bcustomer to retrieve.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        200:
+          description: Successfully retrieved the bcustomer.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BCustomer'
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    put:
+      tags: [BCustomers]
+      security:
+        - bearerAuth: []
+      summary: Update a bcustomer's record
+      description: Updates details of a single bcustomer by ID.
+      parameters:
+        - name: bcustomer_id
+          in: path
+          description: ID of the bcustomer to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BCustomerUpdate'
+      responses:
+        200:
+          description: Successfully updated the bcustomer.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: BCustomer with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [BCustomers]
+      security:
+        - bearerAuth: []
+      summary: Remove a bcustomer's record
+      description: Deletes a single bcustomer by ID.
+      parameters:
+        - name: bcustomer_id
+          in: path
+          description: ID of the bcustomer to remove.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully removed the bcustomer.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /broker/customers/{bcustomer_id}/contacts:
+    post:
+      tags: [BCustomers]
+      security:
+        - bearerAuth: []
+      summary: Register a new bcustomer's contact
+      description: Validates the new contact's data, then adds it to the database.
+      parameters:
+        - name: bcustomer_id
+          in: path
+          description: ID of the bcustomer's contact to remove.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BCustomerContactCreate'
+      responses:
+        201:
+          description: BCustomerContact is registered.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    description: The id of the new bcustomer's contact.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+  /broker/customers/{bcustomer_id}/contacts/{bcustomer_contact_id}:
+    put:
+      tags: [BCustomers]
+      security:
+        - bearerAuth: []
+      summary: Update a bcustomer's contact record
+      description: Updates details of a single contact by ID.
+      parameters:
+        - name: bcustomer_contact_id
+          in: path
+          description: ID of the bcustomer's contact to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - name: bcustomer_id
+          in: path
+          description: ID of the bcustomer's contact to update.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BCustomerContactUpdate'
+      responses:
+        200:
+          description: Successfully updated the bcustomer.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: BCustomer with ID updated successfully
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
+    delete:
+      tags: [BCustomers]
+      security:
+        - bearerAuth: []
+      summary: Remove a bcustomer's contact's record
+      description: Deletes a single bcustomer by ID.
+      parameters:
+        - name: bcustomer_contact_id
+          in: path
+          description: ID of the bcustomer's contact to remove.
+          required: true
+          schema:
+            type: integer
+            example: 1
+        - name: bcustomer_id
+          in: path
+          description: ID of the bcustomer's contact to remove.
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        204:
+          description: Successfully removed the bcustomer's contact.
+        400:
+          $ref: '#/components/responses/BadRequest'
+        404:
+          $ref: '#/components/responses/NotFound'
+        500:
+          $ref: '#/components/responses/InternalServerError'
